@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Add To Cart{% endblock %}</title>
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <!-- Load custom CSS file -->
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <style>
+        body {
+            /* Set light green background color */
+            background-color: #e0f2e9;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 flex flex-col min-h-screen">
+    {% include 'alert.html' %}
+    <header>
+        {% include 'Shop/navbar.html' %}
+    </header>
+    <main class="flex-grow">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="bg-gray-800 text-white">
+        {% include 'footer.html' %}
+    </footer>
+</body>
+
+</html>

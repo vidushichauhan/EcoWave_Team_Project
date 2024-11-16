@@ -1,0 +1,44 @@
+{% extends 'payments/base.html' %}
+{% load static %}
+
+{% block title %}Payment Page{% endblock %}
+
+{% block extra_css %}
+{#<link rel="stylesheet" href="{% static 'payments/styles.css' %}">#}
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl text-green-700 font-bold mb-8 text-center">Payment</h1>
+    <form method="post" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg space-y-6">
+        {% csrf_token %}
+        <div class="space-y-4">
+            <div>
+                <label for="id_Name" class="block text-gray-700 font-bold mb-2">Name</label>
+                {{ form.Name }}
+            </div>
+            <div>
+                <label for="id_address" class="block text-gray-700 font-bold mb-2">Address</label>
+                {{ form.address }}
+            </div>
+            <div>
+                <label for="id_zipcode" class="block text-gray-700 font-bold mb-2">Zipcode</label>
+                {{ form.zipcode }}
+            </div>
+            <div>
+                <label for="id_country" class="block text-gray-700 font-bold mb-2">Country</label>
+                {{ form.country }}
+            </div>
+            <div>
+                <label for="id_city" class="block text-gray-700 font-bold mb-2">City</label>
+                {{ form.city }}
+            </div>
+            <div>
+                <label for="id_Email" class="block text-gray-700 font-bold mb-2">Email</label>
+                {{ form.Email }}
+            </div>
+        </div>
+        <button type="submit" class="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-800 transition duration-300">Pay Now</button>
+    </form>
+</div>
+{% endblock %}

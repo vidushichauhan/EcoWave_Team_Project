@@ -1,0 +1,102 @@
+{% extends 'support/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="faq-container">
+    <h1 class="faq-main-heading">Frequently Asked Questions</h1>
+
+    <!-- Search Section -->
+    <div class="search-container">
+        <h2 class="search-heading">Search FAQs</h2>
+        <form method="get" action="{% url 'support:faq' %}" class="search-form">
+            <div class="search-input-group">
+                <input type="text" name="search" placeholder="Type your question here..." class="search-input">
+                <div class="search-icon">&#128269;</div>
+            </div>
+
+            <div class="select-wrapper">
+                <select name="category" class="search-select">
+                    <option value="">Select Category</option>
+                    <option value="general">General</option>
+                    <option value="account">Account</option>
+                    <option value="billing">Billing</option>
+                    <option value="technical">Technical</option>
+                </select>
+            </div>
+
+            <button type="submit" class="search-button">Search</button>
+        </form>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="accordion">
+        {% for faq in faqs %}
+        <div class="faq-item">
+            <button class="faq-question">
+                <span class="question-text">{{ faq.question }}</span>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>{{ faq.answer }}</p>
+            </div>
+        </div>
+        {% empty %}
+        <p class="no-results">No FAQs available.</p>
+        {% endfor %}
+    </div>
+
+    <!-- Query Box -->
+    <div class="query-container">
+        <div class="query-content">
+            <h2>Could not find your question?</h2>
+            <p>Raise a query and we'll get back to you.</p>
+            <a href="{% url 'support:submit_query' %}" class="query-button">Raise Query</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', function() {
+                // Close all other answers
+                const allAnswers = document.querySelectorAll('.faq-answer');
+                const allQuestions = document.querySelectorAll('.faq-question');
+
+                allAnswers.forEach(answer => {
+                    if (answer !== this.nextElementSibling) {
+                        answer.style.maxHeight = null;
+                        answer.classList.remove('active');
+                    }
+                });
+
+                allQuestions.forEach(q => {
+                    if (q !== this) {
+                        q.classList.remove('active');
+                        q.querySelector('.toggle-icon').textContent = '+';
+                    }
+                });
+
+                // Toggle current answer
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('.toggle-icon');
+
+                this.classList.toggle('active');
+                if (answer.style.maxHeight) {
+                    answer.style.maxHeight = null;
+                    answer.classList.remove('active');
+                    icon.textContent = '+';
+                } else {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                    answer.classList.add('active');
+                    icon.textContent = '−';
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

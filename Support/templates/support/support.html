@@ -1,0 +1,45 @@
+{% extends 'support/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/support.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="banner">
+    <div class="banner-content">
+        <h1>Welcome to GreenCart Support</h1>
+        <p>How can we assist you today?</p>
+    </div>
+</div>
+
+<div class="support-container">
+    <div class="support-image">
+        <img src="{% static 'images/customer_Support.jpg' %}" alt="Customer Support" />
+    </div>
+    <div class="options">
+        <a class="ticket" href="{% url 'support:submit_query' %}">
+            <span class="ticket-text">Raise Query</span>
+        </a>
+        <a class="ticket" href="{% url 'support:faq' %}">
+            <span class="ticket-text">FAQs</span>
+        </a>
+        <a class="ticket" href="{% url 'support:track_ticket' %}">
+            <span class="ticket-text">Track Tickets</span>
+        </a>
+        {% if user.is_staff or user.is_superuser %}
+        <a class="ticket" href="{% url 'support:ticket_input' %}">
+            <span class="ticket-text">Update Ticket Status</span>
+        </a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="query-container">
+        <div class="query-content">
+            <h2>Could not find your question?</h2>
+            <p>Raise a query and we'll get back to you.</p>
+            <a href="{% url 'support:submit_query' %}" class="query-button">Raise Query</a>
+        </div>
+    </div>
+{% endblock %}

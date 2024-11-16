@@ -1,0 +1,56 @@
+{% extends 'support/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'Support/static/support/css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="page-wrapper">
+    <div class="form-container">
+        <h1 class="form-title">Submit Query</h1>
+        <form method="post" enctype="multipart/form-data" class="query-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input type="text" id="first_name" name="first_name" class="form-input" placeholder="Enter your first name">
+            </div>
+
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input type="text" id="last_name" name="last_name" class="form-input" placeholder="Enter your last name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                <label for="query_type">Type</label>
+                <select id="query_type" name="query_type" class="form-select">
+                    <option value="">Select query type</option>
+                    <option value="technical">Technical Support</option>
+                    <option value="billing">Billing</option>
+                    <option value="general">General Inquiry</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" class="form-textarea" placeholder="Describe your query"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="attachment" class="file-label">
+                    <span class="file-text">Choose File</span>
+                    <input type="file" id="attachment" name="attachment" class="file-input">
+                </label>
+                <span class="file-name">No file chosen</span>
+            </div>
+
+            <button type="submit" class="submit-button">Submit Query</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

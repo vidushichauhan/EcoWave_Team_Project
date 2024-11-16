@@ -1,0 +1,36 @@
+{% extends 'Dashboard/base.html' %}
+{% block title %}Unverified Products{% endblock %}
+{% block content %}
+
+<div class="container mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">Unverified Products</h1>
+
+    {% if unverified_products %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for product in unverified_products %}
+        <div class="border rounded-lg shadow-md p-4">
+            {% if product.image.url %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-48 object-cover rounded-lg">
+            {% endif %}
+            <h2 class="font-semibold text-lg mt-2">{{ product.name }}</h2>
+            <p class="text-gray-600">{{ product.description|truncatechars:100 }}</p>
+            <p class="text-green-700 font-bold mt-2">${{ product.price }}</p>
+            <div class="mt-4 flex justify-between items-center">
+                <a href="{% url 'admin:your_app_product_change' product.id %}"
+                   class="text-white bg-green-600 px-4 py-2 rounded hover:bg-green-700">
+                    Verify
+                </a>
+                <a href="{% url 'admin:your_app_product_delete' product.id %}"
+                   class="text-white bg-red-600 px-4 py-2 rounded hover:bg-red-700">
+                    Delete
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No products are waiting for verification.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

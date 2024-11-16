@@ -1,0 +1,229 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+{#    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">#}
+{#    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">#}
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <style>
+        @media (prefers-color-scheme: dark) {
+            .dark\:bg-gray-900 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+            }
+        }
+        .profile-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .bg-teal-100{
+            background-color: #d3faf1 !important;
+        }
+
+        .profile-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            margin-top: -4rem;
+        }
+
+        .profile-image {
+            border: 4px solid white;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .upload-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            display: none;
+        }
+
+        .profile-image-wrapper:hover .upload-text {
+            display: block;
+        }
+
+        .input-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .input-field {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            width: 100%;
+        }
+
+        .button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.2s;
+        }
+
+        .edit-button {
+            background-color: #10b981;
+            color: white;
+        }
+
+        .edit-button:hover {
+            background-color: #059669;
+        }
+
+        .save-button {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .save-button:hover {
+            background-color: #2563eb;
+        }
+
+        .home-button {
+            background-color: #10b981;
+            color: white;
+        }
+
+        .home-button:hover {
+            background-color: #059669;
+        }
+    </style>
+</head>
+
+<body >
+    {% include 'alert.html' %}
+    <main class="profile-page">
+        <section class="relative block h-500-px">
+            <div class="absolute top-0 w-full h-full bg-center bg-cover" style="background-image: url('https://images.unsplash.com/photo-1652062603114-9313b0f9cfee?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+                <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
+            </div>
+            <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
+                <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+                    <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
+                </svg>
+            </div>
+        </section>
+        <section class="relative py-16 bg-gray-100">
+            <div class="absolute top-0 w-full h-full bg-center bg-cover" style="background-image: url('https://images.unsplash.com/photo-1652062603114-9313b0f9cfee?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+                <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
+            </div>
+            <div class="container mx-auto px-4">
+                <div class="profile-card relative mx-auto p-6 sm:p-8 lg:p-10 w-full max-w-4xl">
+                    <div class="profile-image-wrapper">
+                        <img id="profileImage" alt="Profile Picture" src="{{ user_profile_pic }}" class="profile-image rounded-full h-32 w-32 object-cover">
+                        {{ user_profile_form.profile_pic }}
+                         <div id="uploadText" class="hidden" hidden>Upload Image</div>
+                    </div>
+                    <div class="w-full mt-8">
+                        <form id="profileForm" action="{% url 'userprofile:edit_user_details' %}" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                            {% csrf_token %}
+                            <div class="flex flex-col">
+                                <label class="input-label" for="first_name">
+                                    <i class="fas fa-user-circle mr-2"></i>{{ user_form.first_name.label }}
+                                </label>
+                                <input readonly type="text" name="first_name" class="input-field  editable-field" value="{{ user_form.first_name.value }}">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="input-label" for="last_name">
+                                    <i class="fas fa-user-circle mr-2"></i>{{ user_form.last_name.label }}
+                                </label>
+                                <input readonly type="text" name="last_name" class="input-field  editable-field" value="{{ user_form.last_name.value }}">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="input-label" for="location">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>{{ user_profile_form.location.label }}
+                                </label>
+                                <input readonly type="text" name="location" class="input-field  editable-field" value="{{ user_profile_form.location.value }}">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="input-label" for="date_of_birth">
+                                    <i class="fas fa-calendar mr-2"></i>{{ user_profile_form.date_of_birth.label }}
+                                </label>
+                                <input readonly type="date" name="date_of_birth" class="input-field  editable-field" value="{{ user_profile.date_of_birth|date:"Y-m-d" }}">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="input-label" for="email">
+                                    <i class="fas fa-envelope mr-2"></i>{{ user_form.email.label }}
+                                </label>
+                                <input readonly type="email" name="email" class="input-field  editable-field" value="{{ user_form.email.value }}">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="input-label" for="phone_number">
+                                    <i class="fas fa-phone mr-2"></i>{{ user_profile_form.phone_number.label }}
+                                </label>
+                                <input readonly type="text" name="phone_number" class="input-field  editable-field" value="{{ user_profile_form.phone_number.value }}">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="input-label" for="address_line_1">
+                                    <i class="fas fa-home mr-2"></i>{{ user_profile_form.address_line_1.label }}
+                                </label>
+                                <input readonly type="text" name="address_line_1" class="input-field  editable-field" value="{{ user_profile_form.address_line_1.value }}">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="input-label" for="address_line_2">
+                                    <i class="fas fa-home mr-2"></i>{{ user_profile_form.address_line_2.label }}
+                                </label>
+                                <input readonly type="text" name="address_line_2" class="input-field  editable-field" value="{{ user_profile_form.address_line_2.value }}">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="input-label" for="city">
+                                    <i class="fas fa-city mr-2"></i>{{ user_profile_form.city.label }}
+                                </label>
+                                <input readonly type="text" name="city" class="input-field  editable-field" value="{{ user_profile_form.city.value }}">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="input-label" for="state">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>{{ user_profile_form.state.label }}
+                                </label>
+                                <input readonly type="text" name="state" class="input-field  editable-field" value="{{ user_profile_form.state.value }}">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="input-label" for="country">
+                                    <i class="fas fa-flag mr-2"></i>{{ user_profile_form.country.label }}
+                                </label>
+                                <input readonly type="text" name="country" class="input-field  editable-field" value="{{ user_profile_form.country.value }}">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="input-label" for="zip_code">
+                                    <i class="fas fa-envelope mr-2"></i>{{ user_profile_form.zip_code.label }}
+                                </label>
+                                <input readonly type="text" name="zip_code" class="input-field  editable-field" value="{{ user_profile_form.zip_code.value }}">
+                            </div>
+                        </form>
+			<div class="col-span-full flex justify-center mt-6 space-x-4">
+                                <button id="editButton" class="button edit-button">
+                                    Edit
+                                </button>
+                                <button id="saveButton" class="button save-button hidden" type="submit" form="profileForm">
+                                    Save
+                                </button>
+                                <a href="{% url 'Shop:home' %}" class="button home-button">Home</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    {% include 'footer.html' %}
+    <script src="{% static 'js/userprofile.js' %}"></script>
+
+</body>
+
+</html>

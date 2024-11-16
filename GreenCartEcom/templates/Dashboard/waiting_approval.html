@@ -1,0 +1,10 @@
+<div class="container">
+    <h1>Products Waiting for Approval</h1>
+    <ul>
+        {% for product in products %}
+        <li>{{ product.name }} - Submitted on {{ product.created_at }}</li>
+        {% empty %}
+        <p>No products are waiting for approval.</p>
+        {% endfor %}
+    </ul>
+</div>

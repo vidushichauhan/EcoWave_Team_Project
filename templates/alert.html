@@ -1,0 +1,10 @@
+{% load static %}
+
+{% if messages %}
+    <div id="alert" class="alert mt-[60px]">
+        {% for message in messages %}
+            <div class="bg-{% if message.tags == 'success' %}green{% elif message.tags == 'error' %}red{% elif message.tags == 'warning' %}yellow{% endif %}-500 text-white p-4 rounded shadow">{{ message }}</div>
+        {% endfor %}
+    </div>
+    <script src="{% static 'js/setTimeoutForALert.js' %}"></script>
+{% endif %}
