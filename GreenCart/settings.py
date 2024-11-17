@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     "add_to_cart.apps.AddToCartConfig",
     'payments.apps.PaymentsConfig',
     "userprofile.apps.UserprofileConfig",
-    "Support"
+    "Support",
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
