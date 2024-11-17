@@ -135,7 +135,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 STATICFILES_DIRS = [STATIC_DIR,]
 
 
@@ -165,5 +168,5 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-STRIPE_SECRET_KEY = 'sk_test_51PaOOhRtHtPlgcaiSwH19QRY2pMB1G3HYzLZhI5HnX7GwYt4XBxCJ1U9mE3yyFaVPlYobaM4nF1Qn6wzOC1INrjz00c3EnnK05'
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51PaOOhRtHtPlgcaiDlSzoNrhdvbuxI0pjDgLiFgH53Nbch8hjwCNiFIinLLZUUKSA9IhA7dnGyKnBl4qWEI2miDy00H3IE7lGy'
+STRIPE_SECRET_KEY = 'sk_test_51QKufYHq80aNOwX6fekmOqDKyv8JbKYDXl0EMKmgFZEW2GVGjdhRCEnGQj4SylSWj5iTuRdVeB8uCsnRTW0xy78q00i9VykRSs'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51QKufYHq80aNOwX6i1J7HP27xFgRT7wfs79CsNwzykL7kkIKqMx40I12pAFA6yjECHpaDp0nWPITmHrb6TS2I6Ft002oweb7HX'

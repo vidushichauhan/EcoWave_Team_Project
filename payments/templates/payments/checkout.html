@@ -5,7 +5,7 @@
 
 {% block content %}
 <div class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-extrabold mb-8 text-center text-green-700">Checkout</h1>
+    <h1 class="text-4xl font-extrabold mb-8 text-center text-blue-700">Checkout</h1>
     <form id="payment-form" class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg space-y-6" method="post">
         {% csrf_token %}
         <input type="hidden" id="payment_id" name="payment_id" value="{{ payment.id }}">
@@ -30,61 +30,83 @@
             <input type="text" id="zipcode" name="zipcode" value="{{ payment.zipcode }}" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300">
         </div>
 
-        <div id="card-element" class="mb-6 p-4 border border-gray-300 rounded-lg">
-            <!-- A Stripe Element will be inserted here. -->
+        <div class="mb-6">
+            <label for="card-element" class="block text-gray-700 text-lg font-medium mb-2">Card Details</label>
+            <!-- Stripe Card Element -->
+            <div id="card-element" class="p-4 border border-gray-300 rounded-lg"></div>
         </div>
 
         <div id="card-error" role="alert" class="text-red-500 mb-4"></div>
 
-        <button id="submit" class="w-full bg-green-800 text-white py-3 px-4 rounded-lg shadow-md hover:bg-green-800 transition duration-300">Pay</button>
+        <button id="submit" class="w-full bg-blue-800 text-white py-3 px-4 rounded-lg shadow-md hover:bg-blue-800 transition duration-300">Pay</button>
     </form>
+
+
 </div>
 
+<!-- Include Stripe.js -->
+<script src="https://js.stripe.com/v3/"></script>
 <script>
-    // Initialize Stripe
-    var stripe = Stripe('{{ STRIPE_PUBLISHABLE_KEY }}'); // Replace with your Stripe publishable key
-    var elements = stripe.elements();
+        document.addEventListener("DOMContentLoaded", function() {
+            try {
+                // Initialize Stripe
 
-    // Create an instance of the card Element
-    var cardElement = elements.create('card', {
-        hidePostalCode: true
-    });
+                var stripe = Stripe("pk_test_51QKufYHq80aNOwX6i1J7HP27xFgRT7wfs79CsNwzykL7kkIKqMx40I12pAFA6yjECHpaDp0nWPITmHrb6TS2I6Ft002oweb7HX");
+                console.log(stripe);
+                var elements = stripe.elements();
+                console.log("Stripe initialized successfully.");
+                console.log("Stripe Publishable Key:", "{{ pk_test_51QKufYHq80aNOwX6i1J7HP27xFgRT7wfs79CsNwzykL7kkIKqMx40I12pAFA6yjECHpaDp0nWPITmHrb6TS2I6Ft002oweb7HX}}");
 
-    // Add an instance of the card Element into the `card-element` <div>
-    cardElement.mount('#card-element');
 
-    // Handle real-time validation errors from the card Element
-    cardElement.on('change', function(event) {
-        var displayError = document.getElementById('card-error');
-        if (event.error) {
-            displayError.textContent = event.error.message;
-        } else {
-            displayError.textContent = '';
-        }
-    });
+                // Create an instance of the card Element
+                var cardElement = elements.create('card', { hidePostalCode: true });
+                cardElement.mount('#card-element');
+                console.log("Card element mounted successfully.");
 
-    // Handle form submission
-    var form = document.getElementById('payment-form');
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
+                // Handle real-time validation errors from the card Element
+                cardElement.on('change', function(event) {
+                    var displayError = document.getElementById('card-error');
+                    if (event.error) {
+                        displayError.textContent = event.error.message;
+                        console.error("Card input error:", event.error.message);
+                    } else {
+                        displayError.textContent = '';
+                    }
+                });
 
-        stripe.confirmCardPayment('{{ payment_intent_client_secret }}', {
-            payment_method: {
-                card: cardElement,
-                billing_details: {
-                    name: form.querySelector('input[name="name"]').value,
-                    email: form.querySelector('input[name="email"]').value,
-                }
-            }
-        }).then(function(result) {
-            if (result.error) {
-                var paymentId = document.getElementById('payment_id').value;
-                window.location.href = "/pay/failed/" + paymentId + "/";
-            } else {
-                // The payment succeeded!
-                window.location.href = "{% url 'payments:payment_success' %}";
+                // Handle form submission
+                var form = document.getElementById('payment-form');
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+
+                    // Confirm the card payment
+                    stripe.confirmCardPayment('{{ payment_intent_client_secret }}', {
+                        payment_method: {
+                            card: cardElement,
+                            billing_details: {
+                                name: form.querySelector('input[name="name"]').value,
+                                email: form.querySelector('input[name="email"]').value,
+                            }
+                        }
+                    }).then(function(result) {
+                        if (result.error) {
+                            // Show error to your customer (e.g., insufficient funds)
+                            var displayError = document.getElementById('card-error');
+                            displayError.textContent = result.error.message;
+                            console.error("Payment confirmation error:", result.error.message);
+                        } else {
+                            // Payment succeeded, redirect to the success page
+                            console.log("Payment succeeded!");
+                            window.location.href = "{% url 'payments:payment_success' %}";
+                        }
+                    });
+                });
+            } catch (error) {
+                console.error("Stripe initialization error:", error);
+                var displayError = document.getElementById('card-error');
+                displayError.textContent = "There was an error initializing Stripe. Please try again later.";
             }
         });
-    });
-</script>
+    </script>
+
 {% endblock %}

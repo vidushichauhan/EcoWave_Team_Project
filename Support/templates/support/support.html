@@ -15,20 +15,20 @@
 
 <div class="support-container">
     <div class="support-image">
-        <img src="{% static 'images/customer_Support.jpg' %}" alt="Customer Support" />
+        <img src="{% static 'images/customer_Support.jpg' %}" class="rounded-full" alt="Customer Support" />
     </div>
     <div class="options">
-        <a class="ticket" href="{% url 'support:submit_query' %}">
+        <a class="rounded-full ticket" href="{% url 'support:submit_query' %}">
             <span class="ticket-text">Raise Query</span>
         </a>
-        <a class="ticket" href="{% url 'support:faq' %}">
+        <a class="rounded-full ticket" href="{% url 'support:faq' %}">
             <span class="ticket-text">FAQs</span>
         </a>
-        <a class="ticket" href="{% url 'support:track_ticket' %}">
+        <a class="rounded-full ticket" href="{% url 'support:track_ticket' %}">
             <span class="ticket-text">Track Tickets</span>
         </a>
         {% if user.is_staff or user.is_superuser %}
-        <a class="ticket" href="{% url 'support:ticket_input' %}">
+        <a class="rounded-full ticket" href="{% url 'support:ticket_input' %}">
             <span class="ticket-text">Update Ticket Status</span>
         </a>
         {% endif %}
@@ -39,7 +39,7 @@
         <div class="query-content">
             <h2>Could not find your question?</h2>
             <p>Raise a query and we'll get back to you.</p>
-            <a href="{% url 'support:submit_query' %}" class="query-button">Raise Query</a>
+            <a href="{% url 'support:submit_query' %}" class="rounded-full query-button">Raise Query</a>
         </div>
     </div>
 {% endblock %}

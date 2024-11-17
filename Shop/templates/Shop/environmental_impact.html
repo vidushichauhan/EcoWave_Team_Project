@@ -1,53 +1,65 @@
-<!-- environmental_dashboard.html -->
 {% extends "Shop/base.html" %}
 
 {% block title %}Environmental Impact Dashboard{% endblock %}
 
 {% block content %}
-    <div class="container mx-auto mt-10">
+<div class="container mx-auto mt-10 bg-[#E4E0E1] p-8 rounded-lg shadow-md">
     <!-- Page Title -->
     <div class="text-center">
-        <h1 class="text-3xl lg:text-4xl font-bold leading-9 text-green-800 pb-10">Our Impact on the Environment 💚</h1>
+        <h1 class="text-3xl lg:text-4xl font-bold leading-9 text-[#493628] pb-10">Our Impact on the Environment 💚</h1>
     </div>
 
-    <div class="flex justify-center mb-2 pb-5">
-        <div class="flex flex-wrap gap-2">
-            <button onclick="showMetric('carbon')" class="px-2 py-2 bg-green-500 text-white rounded shadow-md hover:bg-green-600">Carbon Footprint</button>
-            <button onclick="showMetric('water')" class="px-2 py-2 bg-blue-500 text-white rounded shadow-md hover:bg-blue-600">Water Footprint</button>
-            <button onclick="showMetric('energy')" class="px-2 py-2 bg-yellow-500 text-white rounded shadow-md hover:bg-yellow-600">Energy Consumption</button>
-            <button onclick="showMetric('chemicals')" class="px-2 py-2 bg-red-500 text-white rounded shadow-md hover:bg-red-600">Toxicity & Chemical Emissions</button>
+    <!-- Metric Selection Buttons -->
+    <div class="flex justify-center mb-6 pb-5">
+        <div class="flex flex-wrap gap-3">
+            <button onclick="showMetric('carbon')" class="px-4 py-2 bg-[#AB886D] text-white font-semibold rounded shadow hover:bg-[#493628]">
+                Carbon Footprint
+            </button>
+            <button onclick="showMetric('water')" class="px-4 py-2 bg-[#D6C0B3] text-white font-semibold rounded shadow hover:bg-[#493628]">
+                Water Footprint
+            </button>
+            <button onclick="showMetric('energy')" class="px-4 py-2 bg-[#AB886D] text-white font-semibold rounded shadow hover:bg-[#493628]">
+                Energy Consumption
+            </button>
+            <button onclick="showMetric('chemicals')" class="px-4 py-2 bg-[#D6C0B3] text-white font-semibold rounded shadow hover:bg-[#493628]">
+                Toxicity & Chemical Emissions
+            </button>
         </div>
     </div>
 
-        <!-- Metric Heading -->
-    <div id="metricHeading" class="text-3xl lg:text-2xl font-bold leading-9 text-green-700 pb-2">
-        Carbon Footprint Analysis
+    <!-- Metric Heading -->
+    <div id="metricHeading" class="text-2xl font-bold leading-9 text-[#493628] pb-4">
+        Carbon Footprint Analysis 🌱
     </div>
 
     <!-- Metric Description -->
-    <div id="chartDescription" class="font-normal text-base leading-6 text-gray-600-700">
+    <div id="chartDescription" class="font-normal text-lg leading-6 text-[#493628]">
         Measures the total greenhouse gas emissions associated with a product, including emissions from production, transportation, and disposal. This analysis is based on the quantity of products sold over the selected period.
     </div>
 
     <!-- Main Layout -->
-    <div class="flex items-start gap-6">
+    <div class="flex flex-col lg:flex-row items-start gap-6 mt-8">
         <!-- Chart Section -->
         <div class="flex-grow bg-white p-6 rounded-lg shadow-md">
-            <!-- Updated Month/Year Toggle -->
-            <div class="flex justify-between mb-2">
-                <!-- Month/Year Toggle -->
+            <!-- Month/Year Toggle -->
+            <div class="flex justify-between mb-4">
                 <div class="flex flex-wrap gap-2">
-                    <button onclick="showMonthly()" class="px-3 py-1 bg-blue-500 text-white rounded shadow-md hover:bg-blue-600">Monthly</button>
-                    <button onclick="showYearly()" class="px-3 py-1 bg-green-500 text-white rounded shadow-md hover:bg-green-600">Yearly</button>
+                    <button onclick="showMonthly()" class="px-4 py-2 bg-[#D6C0B3] text-white rounded shadow hover:bg-[#493628]">
+                        Monthly
+                    </button>
+                    <button onclick="showYearly()" class="px-4 py-2 bg-[#AB886D] text-white rounded shadow hover:bg-[#493628]">
+                        Yearly
+                    </button>
                 </div>
                 <!-- Data Box -->
-                <div id="dataBox" class="bg-gray-100 text-gray-700 text-sm rounded-lg shadow-md px-4 py-2">
+                <div id="dataBox" class="bg-[#E4E0E1] text-[#493628] text-sm rounded-lg shadow px-4 py-2">
                     <p id="dataBoxMetric" class="font-bold">Metric: Carbon Footprint</p>
                     <p id="dataBoxValue">Value: {{ latest_metrics.carbon.monthly }} kg CO₂</p>
                 </div>
             </div>
 
-            <div id="carbonChartContainer" class="metric-chart hidden">
+            <!-- Chart Containers -->
+            <div id="carbonChartContainer" class="metric-chart">
                 <canvas id="carbonChart" width="600" height="200"></canvas>
             </div>
             <div id="waterChartContainer" class="metric-chart hidden">
@@ -65,10 +77,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    // Toggle functions to switch between monthly and yearly views
     let currentPeriod = 'monthly';
+    let currentMetric = 'carbon';
 
-    // Latest metric data (provided by the Django context)
     const latestMetrics = {
         carbon: {{ latest_metrics.carbon|safe }},
         water: {{ latest_metrics.water|safe }},
@@ -76,145 +87,90 @@
         chemicals: {{ latest_metrics.chemicals|safe }}
     };
 
-    // Metric names and units
-    const metricNames = {
-        carbon: "Current Carbon Footprint 🌱",
-        water: "Current Water Footprint 💧",
-        energy: "Current Energy Consumption ⚡️",
-        chemicals: "Current Chemical Emission 🧪"
-    };
-
-    const metricUnits = {
-        carbon: "kg CO₂",
-        water: "liters",
-        energy: "kWh",
-        chemicals: "kg"
-    };
-
-    let headings = {
+    const headings = {
         carbon: "Carbon Footprint Analysis 🌱",
         water: "Water Footprint 💧",
         energy: "Energy Consumption ⚡️",
         chemicals: "Toxicity and Chemical Emissions 🧪"
     };
 
-    let descriptions = {
+    const descriptions = {
         carbon: "Measures the total greenhouse gas emissions associated with a product, including emissions from production, transportation, and disposal. This analysis is based on the quantity of products sold over the selected period.",
-        water: "Measures the total water consumption needed to produce a product. This includes direct water usage in manufacturing and indirect usage, such as water for growing raw materials. The analysis reflects water impact based on product quantities sold.",
-        energy: "Tracks the amount of energy a product consumes throughout its lifecycle. Products with lower energy requirements are generally considered more eco-friendly. The data in the chart reflects energy usage over the selected period.",
-        chemicals: "Examines the presence of harmful chemicals released into the environment during production, usage, or disposal. This chart illustrates emissions based on product sales over the selected period."
+        water: "Measures the total water consumption needed to produce a product. This includes direct water usage in manufacturing and indirect usage, such as water for growing raw materials.",
+        energy: "Tracks the amount of energy a product consumes throughout its lifecycle. Products with lower energy requirements are generally considered more eco-friendly.",
+        chemicals: "Examines the presence of harmful chemicals released into the environment during production, usage, or disposal."
     };
 
-    // Toggle between 'monthly' and 'yearly' views
+    const labels = {
+        monthly: [{% for data in monthly_data %}"{{ data.month|date:'F Y' }}",{% endfor %}],
+        yearly: [{% for data in yearly_data %}"{{ data.year|date:'Y' }}",{% endfor %}]
+    };
+
+    const data = {    monthly: {        carbon: [{% for data in monthly_data %}{% if data.carbon is not None %}{{ data.carbon }},{% endif %}{% endfor %}],        water: [{% for data in monthly_data %}{% if data.water is not None %}{{ data.water }},{% endif %}{% endfor %}],        energy: [{% for data in monthly_data %}{% if data.energy is not None %}{{ data.energy }},{% endif %}{% endfor %}],        chemicals: [{% for data in monthly_data %}{% if data.chemicals is not None %}{{ data.chemicals }},{% endif %}{% endfor %}]    },    yearly: {        carbon: [{% for data in yearly_data %}{% if data.carbon is not None %}{{ data.carbon }},{% endif %}{% endfor %}],        water: [{% for data in yearly_data %}{% if data.water is not None %}{{ data.water }},{% endif %}{% endfor %}],        energy: [{% for data in yearly_data %}{% if data.energy is not None %}{{ data.energy }},{% endif %}{% endfor %}],        chemicals: [{% for data in yearly_data %}{% if data.chemicals is not None %}{{ data.chemicals }},{% endif %}{% endfor %}]    }};
+
+    function showMetric(metric) {
+        currentMetric = metric;
+
+        document.querySelectorAll('.metric-chart').forEach(container => container.classList.add('hidden'));
+        document.getElementById(`${metric}ChartContainer`).classList.remove('hidden');
+
+        document.getElementById('metricHeading').innerText = headings[metric];
+        document.getElementById('chartDescription').innerText = descriptions[metric];
+
+        updateDataBox(metric);
+        updateChart(metric);
+    }
+
     function showMonthly() {
         currentPeriod = 'monthly';
-        updateCharts(currentMetric); // Pass the current metric
-        updateDataBox(currentMetric); // Pass the current metric
+        updateChart(currentMetric);
+        updateDataBox(currentMetric);
     }
 
     function showYearly() {
         currentPeriod = 'yearly';
-        updateCharts(currentMetric); // Pass the current metric
-        updateDataBox(currentMetric); // Pass the current metric
+        updateChart(currentMetric);
+        updateDataBox(currentMetric);
     }
 
-    // Function to handle metric changes
-    function showMetric(metric) {
-        currentMetric = metric; // Update the current metric
-
-        // Hide all metric chart containers
-        document.querySelectorAll('.metric-chart').forEach(container => container.classList.add('hidden'));
-
-        // Show the selected metric chart container
-        document.getElementById(`${metric}ChartContainer`).classList.remove('hidden');
-
-        // Update the metric heading
-        document.getElementById('metricHeading').innerText = headings[metric];
-
-        // Update the metric description
-        document.getElementById('chartDescription').innerText = descriptions[metric];
-
-        // Update the data box and charts dynamically
-        updateCharts(metric); // Pass the metric to update the chart
-        updateDataBox(metric); // Pass the metric to update the data box
-    }
-
-    // Data for Charts
-    const labels = {
-        monthly: [{% for data in monthly_data %}"{{ data.month|date:"F Y" }}",{% endfor %}],
-        yearly: [{% for data in yearly_data %}"{{ data.year|date:"Y" }}",{% endfor %}]
-    };
-
-    const data = {
-        monthly: {
-            carbon: [{% for data in monthly_data %}{% if data.carbon is not None %}{{ data.carbon }},{% endif %}{% endfor %}],
-            water: [{% for data in monthly_data %}{% if data.water is not None %}{{ data.water }},{% endif %}{% endfor %}],
-            energy: [{% for data in monthly_data %}{% if data.energy is not None %}{{ data.energy }},{% endif %}{% endfor %}],
-            chemicals: [{% for data in monthly_data %}{% if data.chemicals is not None %}{{ data.chemicals }},{% endif %}{% endfor %}]
-        },
-        yearly: {
-            carbon: [{% for data in yearly_data %}{% if data.carbon is not None %}{{ data.carbon }},{% endif %}{% endfor %}],
-            water: [{% for data in yearly_data %}{% if data.water is not None %}{{ data.water }},{% endif %}{% endfor %}],
-            energy: [{% for data in yearly_data %}{% if data.energy is not None %}{{ data.energy }},{% endif %}{% endfor %}],
-            chemicals: [{% for data in yearly_data %}{% if data.chemicals is not None %}{{ data.chemicals }},{% endif %}{% endfor %}]
-        }
-    };
-
-    // Initialize Chart.js instances for each metric
-    const carbonChart = new Chart(document.getElementById('carbonChart').getContext('2d'), {
-        type: 'line',
-        data: { labels: labels.monthly, datasets: [{ label: 'Carbon Footprint (kg CO₂)', data: data.monthly.carbon, borderColor: '#4CAF50', fill: false }] },
-        options: { responsive: true }
-    });
-
-    const waterChart = new Chart(document.getElementById('waterChart').getContext('2d'), {
-        type: 'line',
-        data: { labels: labels.monthly, datasets: [{ label: 'Water Footprint (liters)', data: data.monthly.water, borderColor: '#2196F3', fill: false }] },
-        options: { responsive: true }
-    });
-
-    const energyChart = new Chart(document.getElementById('energyChart').getContext('2d'), {
-        type: 'line',
-        data: { labels: labels.monthly, datasets: [{ label: 'Energy Consumption (kWh)', data: data.monthly.energy, borderColor: '#FFEB3B', fill: false }] },
-        options: { responsive: true }
-    });
-
-    const chemicalsChart = new Chart(document.getElementById('chemicalsChart').getContext('2d'), {
-        type: 'line',
-        data: { labels: labels.monthly, datasets: [{ label: 'Chemical Emissions (kg)', data: data.monthly.chemicals, borderColor: '#F44336', fill: false }] },
-        options: { responsive: true }
-    });
-
-    // Update the updateCharts function to accept a metric
-    function updateCharts(metric) {
-        const currentLabels = labels[currentPeriod];
-        const metricData = data[currentPeriod];
-
-        const chart = {
-            carbon: carbonChart,
-            water: waterChart,
-            energy: energyChart,
-            chemicals: chemicalsChart
-        }[metric];
-
-        chart.data.labels = currentLabels;
-        chart.data.datasets[0].data = metricData[metric];
+    function updateChart(metric) {
+        const chart = charts[metric];
+        chart.data.labels = labels[currentPeriod];
+        chart.data.datasets[0].data = data[currentPeriod][metric];
         chart.update();
     }
 
-    // Function to update the data box dynamically
     function updateDataBox(metric) {
-        // Get the value for the selected metric and period
         const value = latestMetrics[metric][currentPeriod] || 0;
-
-        // Update the metric name and value in the data box
-        document.getElementById('dataBoxMetric').innerText = `Metric: ${metricNames[metric]}`;
-        document.getElementById('dataBoxValue').innerText = `Value: ${value} ${metricUnits[metric]}`;
+        document.getElementById('dataBoxMetric').innerText = `Metric: ${headings[metric]}`;
+        document.getElementById('dataBoxValue').innerText = `Value: ${value}`;
     }
 
-    // Initialize the dashboard with the default metric
-    let currentMetric = 'carbon';
-    showMetric(currentMetric);
+    const charts = {
+        carbon: new Chart(document.getElementById('carbonChart'), {
+            type: 'line',
+            data: { labels: labels.monthly, datasets: [{ label: 'Carbon Footprint (kg CO₂)', data: data.monthly.carbon, borderColor: '#AB886D', fill: false }] },
+            options: { responsive: true }
+        }),
+        water: new Chart(document.getElementById('waterChart'), {
+            type: 'line',
+            data: { labels: labels.monthly, datasets: [{ label: 'Water Footprint (liters)', data: data.monthly.water, borderColor: '#D6C0B3', fill: false }] },
+            options: { responsive: true }
+        }),
+        energy: new Chart(document.getElementById('energyChart'), {
+            type: 'line',
+            data: { labels: labels.monthly, datasets: [{ label: 'Energy Consumption (kWh)', data: data.monthly.energy, borderColor: '#AB886D', fill: false }] },
+            options: { responsive: true }
+        }),
+        chemicals: new Chart(document.getElementById('chemicalsChart'), {
+            type: 'line',
+            data: { labels: labels.monthly, datasets: [{ label: 'Chemical Emissions (kg)', data: data.monthly.chemicals, borderColor: '#493628', fill: false }] },
+            options: { responsive: true }
+        })
+    };
 
+    document.addEventListener('DOMContentLoaded', () => {
+        showMetric('carbon');
+    });
 </script>
 {% endblock %}
