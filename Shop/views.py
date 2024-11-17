@@ -6,7 +6,10 @@ from .models import Product, Reviews
 from .forms import ProductForm, ReviewForm
 from django.shortcuts import render, redirect
 from userprofile.models import UserProfile
-
+from django.shortcuts import render
+from django.db.models import Sum, F
+from django.db.models.functions import TruncMonth, TruncYear
+from .models import Sale,InsightProduct
 
 def navbar(request):
     if request.user.is_authenticated:
@@ -242,3 +245,63 @@ def delete_review(request, review_id):
         cal_product.rating = 0
         cal_product.save()
     return redirect('Shop:manage_reviews')
+
+
+
+
+# cibhi dashboard
+
+
+def environmental_dashboard(request):
+    # Monthly aggregation for each metric
+    monthly_data = Sale.objects.annotate(month=TruncMonth('date_sold')).values('month').annotate(
+        carbon=Sum(F('quantity') * F('product__insightproduct__carbon_footprint')),
+        water=Sum(F('quantity') * F('product__insightproduct__water_footprint')),
+        energy=Sum(F('quantity') * F('product__insightproduct__energy_consumption')),
+        chemicals=Sum(F('quantity') * F('product__insightproduct__chemical_emissions'))
+    ).order_by('month')
+
+    # Yearly aggregation for each metric
+    yearly_data = Sale.objects.annotate(year=TruncYear('date_sold')).values('year').annotate(
+        carbon=Sum(F('quantity') * F('product__insightproduct__carbon_footprint')),
+        water=Sum(F('quantity') * F('product__insightproduct__water_footprint')),
+        energy=Sum(F('quantity') * F('product__insightproduct__energy_consumption')),
+        chemicals=Sum(F('quantity') * F('product__insightproduct__chemical_emissions'))
+    ).order_by('year')
+
+
+
+    # Get the latest monthly data point
+    latest_month = monthly_data.last() if monthly_data else None
+
+    # Get the latest yearly data point
+    latest_year = yearly_data.last() if yearly_data else None
+
+    # Prepare latest metric values for the data box
+    latest_metrics = {
+        'carbon': {
+            'monthly': latest_month['carbon'] if latest_month else 0,
+            'yearly': latest_year['carbon'] if latest_year else 0
+        },
+        'water': {
+            'monthly': latest_month['water'] if latest_month else 0,
+            'yearly': latest_year['water'] if latest_year else 0
+        },
+        'energy': {
+            'monthly': latest_month['energy'] if latest_month else 0,
+            'yearly': latest_year['energy'] if latest_year else 0
+        },
+        'chemicals': {
+            'monthly': latest_month['chemicals'] if latest_month else 0,
+            'yearly': latest_year['chemicals'] if latest_year else 0
+        }
+    }
+
+    context = {
+        'monthly_data': monthly_data,
+        'yearly_data': yearly_data,
+        'latest_metrics': latest_metrics  # Pass latest metric values to the template
+    }
+
+
+    return render(request, 'Shop/environmental_impact.html', context)

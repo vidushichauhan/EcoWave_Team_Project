@@ -1,10 +1,9 @@
 from datetime import timedelta
-
+import random
 from django.db import models
 from django.utils import timezone
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
 from Auth.models import User
 
 
@@ -22,7 +21,8 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     user_id = models.CharField(max_length=10, default="1")
     expiry_date = models.DateTimeField(blank=True, null=True)
-    is_verified = models.BooleanField(default=False, help_text="Mark this product as verified to display on homepage")
+    verified = models.BooleanField(default=False, help_text="Mark this product as verified to display on homepage")
+    # verified = models.BooleanField(default=False)  # New field added
     # Trade-In Specific Fields
     condition_choices = [
         ('new', 'New'),
@@ -88,11 +88,39 @@ class Reviews(models.Model):
     rating = models.DecimalField(max_digits=3, decimal_places=2, default=0.0)
 
 @receiver(post_save, sender=Product)
-def set_expiry_date(sender, instance, created, **kwargs):
+def set_expiry_date_and_verified(sender, instance, created, **kwargs):
     if created:
+        # Set expiry_date
         instance.expiry_date = instance.created_at + timedelta(days=instance.expiry)
+        # Set verified randomly
+        instance.verified = random.choice([True, False])
         instance.save()
     else:
+        # Update expiry_date if the product is updated
         Product.objects.filter(id=instance.id).update(
             expiry_date=instance.created_at + timedelta(days=instance.expiry)
         )
+
+
+
+
+class InsightProduct(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    carbon_footprint = models.FloatField()  # in kg CO2
+    water_footprint = models.FloatField()  # in liters
+    energy_consumption = models.FloatField()  # in kWh
+    chemical_emissions = models.FloatField()  # in kg
+    waste_recycling_rate = models.FloatField()  # percentage
+
+    def __str__(self):
+        return f"Impact for {self.product.name}"
+
+# models.py
+
+class Sale(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='sales')
+    quantity = models.IntegerField()
+    date_sold = models.DateTimeField()
+
+    def __str__(self):
+        return f"Sale of {self.product.name} on {self.date_sold}"

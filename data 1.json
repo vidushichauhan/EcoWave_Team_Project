@@ -1,0 +1,849 @@
+[
+    {
+        "model": "Auth.User",
+        "pk": 1,
+        "fields": {
+            "first_name": "admin",
+            "email": "admin@greencart.com",
+            "last_name": "admin",
+            "password": "pbkdf2_sha256$600000$0FjuZXUItXGWbeWFurh8u3$dQsM8ptw+Pad5B0I6cstdfDKM9g6Q2ig4CJaMRkZaVY=",
+            "is_superuser": true,
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "model": "Auth.User",
+        "pk": 2,
+        "fields": {
+            "first_name": "test",
+            "email": "test@greencart.com",
+            "last_name": "user",
+            "password": "pbkdf2_sha256$600000$sH4aon10SebzQ0LdhwAj8T$b8UEWHglxnZYEziQMRukhf56QExfKpgH4/ecOlWE0a0=",
+            "is_superuser": false,
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "model": "Auth.User",
+        "pk": 3,
+        "fields": {
+            "first_name": "yash",
+            "email": "yash@greencart.com",
+            "last_name": "Sahsani",
+            "password": "pbkdf2_sha256$600000$sH4aon10SebzQ0LdhwAj8T$b8UEWHglxnZYEziQMRukhf56QExfKpgH4/ecOlWE0a0=",
+            "is_superuser": false,
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "Auth.User",
+        "pk": 4,
+        "fields": {
+            "first_name": "meet",
+            "email": "meet@greencart.com",
+            "last_name": "Patel",
+            "password": "pbkdf2_sha256$600000$sH4aon10SebzQ0LdhwAj8T$b8UEWHglxnZYEziQMRukhf56QExfKpgH4/ecOlWE0a0=",
+            "is_superuser": false,
+            "is_staff": false,
+            "is_active": true
+        }
+    },
+    {
+        "model": "userprofile.userprofile",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "date_of_birth": "1990-01-01",
+            "address_line_1": null,
+            "address_line_2": "-",
+            "city": null,
+            "state": null,
+            "country": null,
+            "zip_code": null,
+            "phone_number": null,
+            "profile_pic": "default.jpg",
+            "location": null
+        }
+    },
+    {
+        "model": "userprofile.userprofile",
+        "pk": 2,
+        "fields": {
+            "user": 2,
+            "date_of_birth": "1990-01-01",
+            "address_line_1": null,
+            "address_line_2": "-",
+            "city": null,
+            "state": null,
+            "country": null,
+            "zip_code": null,
+            "phone_number": null,
+            "profile_pic": "default.jpg",
+            "location": null
+        }
+    },
+    {
+        "model": "userprofile.userprofile",
+        "pk": 3,
+        "fields": {
+            "user": 3,
+            "date_of_birth": "2000-07-01",
+            "address_line_1": "1132 Windsor Ave",
+            "address_line_2": "-",
+            "city": "Windsor",
+            "state": "Ontario",
+            "country": "Canada",
+            "zip_code": "N9A1K4",
+            "phone_number": "1234567890",
+            "profile_pic": "profile_pics/Screenshot_2024-05-17_at_7.37.46PM.png",
+            "location": "None"
+        }
+    },
+    {
+        "model": "userprofile.userprofile",
+        "pk": 4,
+        "fields": {
+            "user": 4,
+            "date_of_birth": "1990-01-01",
+            "address_line_1": null,
+            "address_line_2": "-",
+            "city": null,
+            "state": null,
+            "country": null,
+            "zip_code": null,
+            "phone_number": null,
+            "profile_pic": "default.jpg",
+            "location": null
+        }
+    },
+    {
+        "model": "Shop.Product",
+        "pk": 1,
+        "fields": {
+            "name": "Anthurium (Pink) - Plant",
+            "description": "Anthurium is a genus of about 1,000 species of flowering plants, native to the Americas. These plants are known for their bright flowers and can be used as a decorative indoor plant.",
+            "price": 29.00,
+            "discount_price": 19.00,
+            "image": "products/anthurium_pink.jpg",
+            "in_stock": true,
+            "rating": 4.0,
+            "created_at": "2024-07-29T00:00:00Z",
+            "updated_at": "2024-07-29T00:00:00Z",
+            "expiry": 330,
+            "expiry_date": "2025-08-15T00:00:00Z"
+        }
+    },
+    {
+        "model": "Shop.Product",
+        "pk": 2,
+        "fields": {
+            "name": "Areca Palm (Small) - Plant",
+            "description": "Areca Palm is a popular houseplant and also known as Butterfly Palm. It is one of the most widely used palms for bright interiors. What makes it special: NASA recommended an air purifier plant. Popular indoor house plant. Best plant for AC rooms, office desk.",
+            "price": 50.00,
+            "discount_price": 30.00,
+            "image": "products/areca_palm_small.webp",
+            "in_stock": true,
+            "rating": 5.0,
+            "created_at": "2024-07-29T00:00:00Z",
+            "updated_at": "2024-07-29T00:00:00Z",
+            "expiry_date": "2025-08-15T00:00:00Z",
+            "expiry": 430,
+            "user_id": "2"
+        }
+    },
+    {
+        "model": "Shop.Product",
+        "pk": 3,
+        "fields": {
+            "name": "Top 5 air purifier and oxygen enriching plant pack",
+            "description": "This plant pack includes the top 5 plants recommended by NASA for air purification and oxygen enrichment. Perfect for any home or office.",
+            "price": 80.00,
+            "discount_price": 70.00,
+            "image": "products/air_purifier_pack.jpg",
+            "in_stock": true,
+            "rating": 3.0,
+            "created_at": "2024-07-29T00:00:00Z",
+            "updated_at": "2024-07-29T00:00:00Z",
+            "expiry_date": "2025-08-15T00:00:00Z",
+            "expiry": 370,
+            "user_id": "2"
+        }
+    },
+    {
+        "model": "Shop.Product",
+        "pk": 4,
+        "fields": {
+            "name": "Sansevieria trifasciata Hahnii, Snake Plant - Plant",
+            "description": "Sansevieria trifasciata Hahnii is a popular houseplant with dark green leaves marked with a pattern of wavy cross stripes in a lighter color. What makes it special: NASA recommended an air purifier plant. Best plant for AC rooms, office desk. Zero maintenance plant. Best indoor plant for low light condition.",
+            "price": 26.00,
+            "discount_price": 16.00,
+            "image": "products/snake_plant.jpg",
+            "in_stock": true,
+            "rating": 5.0,
+            "created_at": "2024-07-29T00:00:00Z",
+            "updated_at": "2024-07-29T00:00:00Z",
+            "expiry_date": "2025-08-15T00:00:00Z",
+            "expiry": 380,
+            "user_id": "2"
+        }
+    },
+    {
+        "model": "Shop.Product",
+        "pk": 5,
+        "fields": {
+            "name": "Aptenia, Heartleaf Ice - Succulent Plant",
+            "description": "Aptenia is a genus of succulent plants with heart-shaped leaves and bright flowers. These plants are perfect for indoor decoration and require minimal care.",
+            "price": 30.00,
+            "discount_price": 20.00,
+            "image": "products/aptenia_heartleaf.jpg",
+            "in_stock": true,
+            "rating": 5.0,
+            "created_at": "2024-07-29T00:00:00Z",
+            "updated_at": "2024-07-29T00:00:00Z",
+            "expiry_date": "2025-08-15T00:00:00Z",
+            "expiry": 310,
+            "user_id": "2"
+        }
+    },
+    {
+        "model": "Shop.Product",
+        "pk": 6,
+        "fields": {
+            "name": "Rose (Red) - Plant",
+            "description": "Red Roses are a symbol of love and beauty. This plant can be grown indoors and is known for its vibrant red flowers.",
+            "price": 21.00,
+            "discount_price": 11.00,
+            "image": "products/rose_red.webp",
+            "in_stock": true,
+            "rating": 2.0,
+            "created_at": "2024-07-29T00:00:00Z",
+            "updated_at": "2024-07-29T00:00:00Z",
+            "expiry_date": "2025-08-15T00:00:00Z",
+            "expiry": 390,
+            "user_id": "2"
+        }
+    },
+    {
+        "model": "Shop.Product",
+        "pk": 7,
+        "fields": {
+            "name": "Hydrangea macrophylla (Any Color) - Plant",
+            "description": "Hydrangea macrophylla is known for its large and colorful flower heads. These plants are perfect for indoor decoration and can come in various colors.",
+            "price": 17.00,
+            "discount_price": 14.00,
+            "image": "products/hydrangea_macrophylla.jpg",
+            "in_stock": true,
+            "rating": 3.0,
+            "created_at": "2024-07-29T00:00:00Z",
+            "updated_at": "2024-07-29T00:00:00Z",
+            "expiry_date": "2025-08-15T00:00:00Z",
+            "expiry": 430,
+            "user_id": "2"
+        }
+    },
+    {
+        "model": "Shop.Product",
+        "pk": 8,
+        "fields": {
+            "name": "Set of 2 Bonsai Looking Grafted Adeniums",
+            "description": "This set includes two Bonsai looking Adenium plants. These plants are known for their unique appearance and are perfect for indoor decoration.",
+            "price": 26.00,
+            "discount_price": 22.00,
+            "image": "products/bonsai_adenium.jpg",
+            "in_stock": true,
+            "rating": 4.0,
+            "created_at": "2024-07-29T00:00:00Z",
+            "updated_at": "2024-07-29T00:00:00Z",
+            "expiry_date": "2025-08-15T00:00:00Z",
+            "expiry": 334,
+            "user_id": "2"
+        }
+    }, {
+        "model": "Shop.product",
+        "pk": 9,
+        "fields": {
+            "name": "Flamingo Flower",
+            "description": "The Flamingo Flower Plant, known scientifically as Anthurium andraeanum, is a striking and vibrant addition to any indoor garden. Belonging to the Araceae family, this tropical plant originates from the rainforests of Central and South America. It features glossy, heart-shaped leaves and distinctive, long-lasting blooms in various colors, including red, pink, white, and purple. For instance, the Pink Flamingo Flower is a popular variety, adding a touch of elegance and color to any setting.\r\n\r\nFlamingo plants thrive in hardy zones 10-11, making them well-suited for warm, humid environments. They are relatively easy to care for and prefer bright, indirect light and consistent moisture. The Flamingo Lily is related to the Peace Lily and shares similar care needs.\r\n\r\nIn Feng Shui, the Flamingo Flower symbolizes hospitality and happiness, making it a popular choice for homes and as a gift. While not as toxic as other houseplants, it can still harm pets’ well-being if ingested.",
+            "price": "50.00",
+            "discount_price": "43.00",
+            "image": "products/b2df66a3fbdb--PDP-6in-Flamingo-Flower-White-Ceramic-01.webp",
+            "in_stock": true,
+            "rating": 5,
+            "created_at": "2024-07-22T21:33:38.187Z",
+            "updated_at": "2024-07-22T21:34:18.497Z",
+            "user_id": "3",
+            "expiry": 372,
+            "expiry_date": "2024-07-23T21:33:38.187Z"
+        }
+    },
+    {
+        "model": "GreenCartEcom.offer",
+        "pk": 1,
+        "fields" : {
+            "title": "Indoor Plants",
+            "image": "offers_poster/indoor.jpg"
+        }
+    },
+    {
+        "model": "GreenCartEcom.offer",
+        "pk": 2,
+        "fields" : {
+            "title": "Outdoor Plants",
+            "image": "offers_poster/Outdoor_plants.jpg"
+        }
+    },
+    {
+        "model": "GreenCartEcom.offer",
+        "pk": 3,
+        "fields" : {
+            "title": "Gardening Toolkit",
+            "image": "offers_poster/toolkit.webp"
+        }
+    },
+    {
+        "model": "GreenCartEcom.offer",
+        "pk": 4,
+        "fields" : {
+            "title": "Pot sets",
+            "image": "offers_poster/pot_sets.jpg"
+        }
+    },
+    {
+        "model": "GreenCartEcom.offer",
+        "pk": 5,
+        "fields" : {
+            "title": "Art and crafts for Decoration",
+            "image": "offers_poster/arts.webp"
+        }
+    },
+    {
+        "model": "Support.faqCategory",
+        "pk": 1,
+        "fields": {
+            "name": "Plant Care"
+        }
+    },
+    {
+        "model": "Support.faqCategory",
+        "pk": 2,
+        "fields": {
+            "name": "Gardening Tips"
+        }
+    },
+    {
+        "model": "Support.faqCategory",
+        "pk": 3,
+        "fields": {
+            "name": "Pet-Friendly Plants"
+        }
+    },
+    {
+        "model": "Support.faqCategory",
+        "pk": 4,
+        "fields": {
+            "name": "Indoor Plants"
+        }
+    },
+    {
+        "model": "Support.faqCategory",
+        "pk": 5,
+        "fields": {
+            "name": "Vegetable Gardening"
+        }
+    },
+    {
+        "model": "Support.faqCategory",
+        "pk": 6,
+        "fields": {
+            "name": "Pest Control"
+        }
+    },
+    {
+        "model": "Support.faqCategory",
+        "pk": 7,
+        "fields": {
+            "name": "Indoor Gardening"
+        }
+    },
+    {
+        "model": "Support.faqCategory",
+        "pk": 8,
+        "fields": {
+            "name": "Outdoor Gardening"
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 1,
+        "fields": {
+            "question": "What are the best plants for low light conditions?",
+            "answer": "Plants like snake plants, pothos, and peace lilies thrive in low light.",
+            "category": 1
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 2,
+        "fields": {
+            "question": "How often should I water my succulents?",
+            "answer": "Succulents prefer dry conditions; water them every 2-3 weeks, depending on the climate.",
+            "category": 2
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 3,
+        "fields": {
+            "question": "Which plants are pet-friendly?",
+            "answer": "Some pet-friendly plants include spider plants, Boston ferns, and African violets.",
+            "category": 3
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 4,
+        "fields": {
+            "question": "How can I prevent overwatering my houseplants?",
+            "answer": "Ensure your pots have drainage holes and check soil moisture before watering.",
+            "category": 1
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 5,
+        "fields": {
+            "question": "What are air-purifying plants?",
+            "answer": "Plants like peace lilies, spider plants, and snake plants help improve indoor air quality.",
+            "category": 4
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 6,
+        "fields": {
+            "question": "How do I propagate succulents?",
+            "answer": "Succulents can be propagated from leaf or stem cuttings placed in well-draining soil.",
+            "category": 2
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 7,
+        "fields": {
+            "question": "What is the best fertilizer for indoor plants?",
+            "answer": "Use a balanced liquid fertilizer diluted to half-strength during the growing season.",
+            "category": 1
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 8,
+        "fields": {
+            "question": "How much sunlight do tomato plants need?",
+            "answer": "Tomato plants require at least 6-8 hours of direct sunlight daily for optimal growth.",
+            "category": 5
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 9,
+        "fields": {
+            "question": "What causes yellowing leaves on houseplants?",
+            "answer": "Yellow leaves can result from overwatering, nutrient deficiencies, or insufficient light.",
+            "category": 1
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 10,
+        "fields": {
+            "question": "How can I control pests on my plants naturally?",
+            "answer": "Use neem oil, insecticidal soap, or introduce beneficial insects like ladybugs.",
+            "category": 6
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 11,
+        "fields": {
+            "question": "What is the best way to repot a plant?",
+            "answer": "Choose a pot one size larger, gently loosen roots, and add fresh potting mix.",
+            "category": 1
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 12,
+        "fields": {
+            "question": "Which herbs can I grow indoors year-round?",
+            "answer": "Herbs like basil, mint, parsley, and chives thrive indoors with adequate light.",
+            "category": 7
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 13,
+        "fields": {
+            "question": "How do I prevent fungus gnats in houseplants?",
+            "answer": "Allow soil to dry between waterings and use sticky traps to catch adult gnats.",
+            "category": 6
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 14,
+        "fields": {
+            "question": "What is the ideal humidity level for tropical houseplants?",
+            "answer": "Tropical plants prefer humidity levels of 50% or higher; misting can help maintain humidity.",
+            "category": 4
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 15,
+        "fields": {
+            "question": "Can I grow vegetables indoors?",
+            "answer": "Yes, vegetables like lettuce, cherry tomatoes, and peppers can be grown indoors with sufficient light.",
+            "category": 7
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 16,
+        "fields": {
+            "question": "How do I revive a wilting plant?",
+            "answer": "Check soil moisture and water as needed; trim any damaged leaves and provide appropriate light.",
+            "category": 1
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 17,
+        "fields": {
+            "question": "What are the benefits of using mulch in garden beds?",
+            "answer": "Mulch helps retain soil moisture, suppress weeds, and regulate soil temperature.",
+            "category": 2
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 18,
+        "fields": {
+            "question": "How can I create a herb garden in small spaces?",
+            "answer": "Use vertical planters, hanging baskets, or window boxes for compact herb gardens.",
+            "category": 7
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 19,
+        "fields": {
+            "question": "How do I prevent root rot in houseplants?",
+            "answer": "Ensure pots have drainage holes, use well-draining soil, and avoid overwatering.",
+            "category": 1
+        }
+    },
+    {
+        "model": "Support.faq",
+        "pk": 20,
+        "fields": {
+            "question": "Which plants are best suited for a balcony garden?",
+            "answer": "Herbs, succulents, and compact vegetables like cherry tomatoes and peppers thrive in balcony gardens.",
+            "category": 8
+        }
+    },
+
+
+    {
+        "model": "Shop.InsightProduct",
+        "pk": 1,
+        "fields": {
+            "product": 1,
+            "carbon_footprint": 1.2,
+            "water_footprint": 110.0,
+            "energy_consumption": 0.7,
+            "chemical_emissions": 0.05,
+            "waste_recycling_rate": 0.15
+        }
+    },
+    {
+        "model": "Shop.InsightProduct",
+        "pk": 2,
+        "fields": {
+            "product": 2,
+            "carbon_footprint": 2.1,
+            "water_footprint": 130.0,
+            "energy_consumption": 0.9,
+            "chemical_emissions": 0.07,
+            "waste_recycling_rate": 0.25
+        }
+    },
+    {
+        "model": "Shop.InsightProduct",
+        "pk": 3,
+        "fields": {
+            "product": 3,
+            "carbon_footprint": 1.8,
+            "water_footprint": 140.0,
+            "energy_consumption": 1.1,
+            "chemical_emissions": 0.04,
+            "waste_recycling_rate": 0.30
+        }
+    },
+    {
+        "model": "Shop.InsightProduct",
+        "pk": 4,
+        "fields": {
+            "product": 4,
+            "carbon_footprint": 1.3,
+            "water_footprint": 115.0,
+            "energy_consumption": 0.8,
+            "chemical_emissions": 0.05,
+            "waste_recycling_rate": 0.20
+        }
+    },
+    {
+        "model": "Shop.InsightProduct",
+        "pk": 5,
+        "fields": {
+            "product": 5,
+            "carbon_footprint": 2.5,
+            "water_footprint": 150.0,
+            "energy_consumption": 1.2,
+            "chemical_emissions": 0.06,
+            "waste_recycling_rate": 0.35
+        }
+    },
+    {
+        "model": "Shop.InsightProduct",
+        "pk": 6,
+        "fields": {
+            "product": 6,
+            "carbon_footprint": 2.0,
+            "water_footprint": 125.0,
+            "energy_consumption": 1.0,
+            "chemical_emissions": 0.03,
+            "waste_recycling_rate": 0.40
+        }
+    },
+    {
+        "model": "Shop.InsightProduct",
+        "pk": 7,
+        "fields": {
+            "product": 7,
+            "carbon_footprint": 1.9,
+            "water_footprint": 135.0,
+            "energy_consumption": 0.85,
+            "chemical_emissions": 0.02,
+            "waste_recycling_rate": 0.27
+        }
+    },
+    {
+        "model": "Shop.InsightProduct",
+        "pk": 8,
+        "fields": {
+            "product": 8,
+            "carbon_footprint": 1.4,
+            "water_footprint": 118.0,
+            "energy_consumption": 0.75,
+            "chemical_emissions": 0.06,
+            "waste_recycling_rate": 0.30
+        }
+    },
+    {
+        "model": "Shop.InsightProduct",
+        "pk": 9,
+        "fields": {
+            "product": 13,
+            "carbon_footprint": 2.2,
+            "water_footprint": 160.0,
+            "energy_consumption": 1.5,
+            "chemical_emissions": 0.08,
+            "waste_recycling_rate": 0.45
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 1,
+        "fields": {
+            "product": 1,
+            "quantity": 15,
+            "date_sold": "2024-01-05T11:00:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 5,
+        "fields": {
+            "product": 5,
+            "quantity": 14,
+            "date_sold": "2024-03-02T12:15:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 9,
+        "fields": {
+            "product": 9,
+            "quantity": 13,
+            "date_sold": "2024-07-07T10:30:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 13,
+        "fields": {
+            "product": 4,
+            "quantity": 9,
+            "date_sold": "2024-10-02T14:30:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 18,
+        "fields": {
+            "product": 6,
+            "quantity": 16,
+            "date_sold": "2024-11-06T14:00:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 21,
+        "fields": {
+            "product": 1,
+            "quantity": 7,
+            "date_sold": "2021-02-15T11:00:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 22,
+        "fields": {
+            "product": 2,
+            "quantity": 10,
+            "date_sold": "2021-05-10T14:00:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 23,
+        "fields": {
+            "product": 3,
+            "quantity": 5,
+            "date_sold": "2021-07-20T09:30:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 24,
+        "fields": {
+            "product": 4,
+            "quantity": 6,
+            "date_sold": "2021-09-15T12:00:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 25,
+        "fields": {
+            "product": 5,
+            "quantity": 9,
+            "date_sold": "2021-12-05T15:45:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 26,
+        "fields": {
+            "product": 1,
+            "quantity": 12,
+            "date_sold": "2022-03-10T10:00:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 27,
+        "fields": {
+            "product": 2,
+            "quantity": 14,
+            "date_sold": "2022-06-15T11:30:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 28,
+        "fields": {
+            "product": 3,
+            "quantity": 11,
+            "date_sold": "2022-08-20T13:00:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 29,
+        "fields": {
+            "product": 4,
+            "quantity": 8,
+            "date_sold": "2022-10-25T16:00:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 30,
+        "fields": {
+            "product": 5,
+            "quantity": 13,
+            "date_sold": "2022-12-20T18:30:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 31,
+        "fields": {
+            "product": 1,
+            "quantity": 15,
+            "date_sold": "2023-01-15T09:00:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 32,
+        "fields": {
+            "product": 2,
+            "quantity": 9,
+            "date_sold": "2023-04-12T13:15:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 33,
+        "fields": {
+            "product": 3,
+            "quantity": 6,
+            "date_sold": "2023-07-22T14:45:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 34,
+        "fields": {
+            "product": 4,
+            "quantity": 10,
+            "date_sold": "2023-10-15T17:30:00Z"
+        }
+    },
+    {
+        "model": "Shop.Sale",
+        "pk": 35,
+        "fields": {
+            "product": 5,
+            "quantity": 8,
+            "date_sold": "2023-12-28T20:00:00Z"
+        }
+    }
+]
+

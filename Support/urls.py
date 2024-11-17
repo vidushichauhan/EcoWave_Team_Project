@@ -15,4 +15,5 @@ urlpatterns = [
     path('update-status/<int:ticket_number>/', views.update_status, name='update_status'),
     path('update-success/', views.update_sucess, name='update_success'),
     path('faq/', views.faq, name='faq'),
+
 ]
