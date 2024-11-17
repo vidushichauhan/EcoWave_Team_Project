@@ -15,7 +15,7 @@
         <!-- Image Section -->
         <div class="flex justify-center items-center">
             <div class="relative w-full max-w-md h-auto rounded-lg shadow-lg overflow-hidden">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-auto object-cover">
+                <img src="{{ product.image.url }}" alt="{{ product.name | slice:":60"}}" class="w-full h-auto object-cover">
                 <form action="{% url 'AddToCart:add_product_wishlist' product.id %}" method="POST" class="absolute top-2 right-2">
                     {% csrf_token %}
                     <button type="submit" class="text-[#493628] hover:text-red-600 focus:outline-none">

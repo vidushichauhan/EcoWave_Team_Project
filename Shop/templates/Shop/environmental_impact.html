@@ -107,7 +107,6 @@
     };
 
     const data = {    monthly: {        carbon: [{% for data in monthly_data %}{% if data.carbon is not None %}{{ data.carbon }},{% endif %}{% endfor %}],        water: [{% for data in monthly_data %}{% if data.water is not None %}{{ data.water }},{% endif %}{% endfor %}],        energy: [{% for data in monthly_data %}{% if data.energy is not None %}{{ data.energy }},{% endif %}{% endfor %}],        chemicals: [{% for data in monthly_data %}{% if data.chemicals is not None %}{{ data.chemicals }},{% endif %}{% endfor %}]    },    yearly: {        carbon: [{% for data in yearly_data %}{% if data.carbon is not None %}{{ data.carbon }},{% endif %}{% endfor %}],        water: [{% for data in yearly_data %}{% if data.water is not None %}{{ data.water }},{% endif %}{% endfor %}],        energy: [{% for data in yearly_data %}{% if data.energy is not None %}{{ data.energy }},{% endif %}{% endfor %}],        chemicals: [{% for data in yearly_data %}{% if data.chemicals is not None %}{{ data.chemicals }},{% endif %}{% endfor %}]    }};
-
     function showMetric(metric) {
         currentMetric = metric;
 

@@ -30,8 +30,8 @@ body {
 
 /* Banner Styles */
 .banner {
-    background-color: #D6C0B3;
-    color: #493628;
+    background-color: #493628;
+    color: #D6C0B3;
     padding: 60px 0;
     text-align: right;
     margin-top: 0;
@@ -42,19 +42,19 @@ body {
 .banner-content {
     max-width: 600px;
     margin-right: 50px;
-    color: #493628;
+    color: #D6C0B3;
 }
 
 .banner h1 {
     font-size: 2.5em;
     margin-bottom: 20px;
-    color: #493628;
+    color: #D6C0B3;
 }
 
 .banner p {
     font-size: 1.2em;
     margin-bottom: 20px;
-    color: #493628;
+    color: #D6C0B3;
 }
 
 /* Support Container and Options */

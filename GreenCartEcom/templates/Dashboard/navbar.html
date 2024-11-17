@@ -9,10 +9,10 @@
     <title>EcoPulse</title>
     <style>
         nav {
-            background-color: white;
+            background-color: #D6C0B3;
             border-radius: 0 0 1rem 1rem;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 0.5rem 2rem; /* Adjusted padding to reduce height */
+            box-shadow: 0px 4px 6px #D6C0B3;
+            padding: 0.0rem 1rem; /* Adjusted padding to reduce height */
         }
 
         nav .nav-links a {
@@ -76,8 +76,7 @@
         <!-- Logo Section -->
         <div class="flex items-center">
             <a href="/shop" class="flex items-center">
-                <img src="{% static 'images/logo.png' %}" alt="EcoPulse Logo" class="h-10 mr-3"> <!-- Larger logo -->
-                <span class="text-xl font-bold text-green-700">EcoPulse</span>
+                <img src="{% static 'images/logo.png' %}" alt="EcoPulse Logo" class="h-20 w-20 mr-2"> <!-- Larger logo -->
             </a>
         </div>
 
@@ -86,13 +85,15 @@
             <a href="{% url 'AddToCart:cart' %}">Cart</a>
             <a href="{% url 'AddToCart:wishlist' %}">Wishlist</a>
             <a href="{% url 'Shop:product_list' %}">Trade In</a>
+            <a href="{% url 'Shop:Recycle' %}">Recycle</a>
+            <a href="{% url 'Shop:environmental_impact_dashboard' %}">Dashboard</a>
             <a href="{% url 'support:support-home' %}">Support</a>
             <a href="{% url 'GreenCartEcom:about' %}">About Us</a>
         </div>
 
         <!-- Profile Section with Dropdown -->
         <div class="profile-container relative">
-            <img src="{{ user_profile_pic }}" alt="Profile Picture" class="profile-image" id="profile-btn">
+            <img src="/media/default.png" alt="Profile Picture" class="profile-image" id="profile-btn">
             <div class="dropdown-menu" id="dropdown">
                 <a href="{% url 'Profile:get_user_details' %}">Profile</a>
                 <a href="{% url 'Auth:logout' %}">Logout</a>

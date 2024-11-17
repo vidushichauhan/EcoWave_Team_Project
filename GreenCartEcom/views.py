@@ -59,15 +59,15 @@ def terms_and_conditions(request):
 
 def gardening_guides(request):
     if request.user.is_authenticated:
-        return render(request, 'FooterPages/gardening_guides.html', {'user_profile_pic': UserProfile.objects.get(user=request.user).profile_pic.url})
+        return render(request, 'FooterPages/Environment_Renew.html', {'user_profile_pic': UserProfile.objects.get(user=request.user).profile_pic.url})
     else:
-        return render(request, 'FooterPages/gardening_guides.html')
+        return render(request, 'FooterPages/Environment_Renew.html')
 
 def plant_care_tips(request):
     if request.user.is_authenticated:
-        return render(request, 'FooterPages/plant_care_tips.html', {'user_profile_pic': UserProfile.objects.get(user=request.user).profile_pic.url})
+        return render(request, 'FooterPages/Eco_Friendly_Tips.html', {'user_profile_pic': UserProfile.objects.get(user=request.user).profile_pic.url})
     else:
-        return render(request, 'FooterPages/plant_care_tips.html')
+        return render(request, 'FooterPages/Eco_Friendly_Tips.html')
 
 def subscribe(request):
     if request.method == "POST":

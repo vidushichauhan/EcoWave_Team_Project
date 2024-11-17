@@ -35,7 +35,7 @@
                     </a>
                     <div class="mt-4 px-5 pb-5">
                         <a href="{% url 'Shop:edit_product' product.id %}">
-                            <h5 class="text-xl font-semibold tracking-tight text-[#493628]">{{ product.name }}</h5>
+                            <h5 class="text-xl font-semibold tracking-tight text-[#493628]">{{ product.name|slice:":30" }}</h5>
                         </a>
                         <p class="text-[#493628] mb-4">
                             {{ product.description|slice:":60" }}{% if product.reason_for_trade_in|length > 60 %}...{% endif %}

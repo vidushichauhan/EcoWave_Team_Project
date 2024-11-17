@@ -85,83 +85,70 @@
 </script>
 
 <!-- Product List Section -->
-<div class="mt-4 ml-4">
-    <h2 class="font-bold text-xl">Verified Products</h2>
-    <div class="flex overflow-x-auto space-x-6 p-4 py-2">
-        <div class="flex flex-grow justify-center">
-            {% for product in products %}
-            <div class="relative overflow-hidden rounded-lg shadow-lg flex flex-col justify-between h-100 min-w-[250px] w-64 flex-shrink-0">
-                {% if product.image.url %}
-                <div class="relative p-4 flex items-center justify-center h-64">
-                    <img class="relative w-full h-full object-cover" src="{{ product.image.url }}" alt="{{ product.name }}">
+<div class="mt-6 ml-6">
+    <h2 class="font-bold text-2xl text-[#493628] mb-4">Verified Products</h2>
+    <div class="flex overflow-x-auto space-x-6 p-4 py-2 bg-[#EDE0D4] rounded-lg shadow-inner">
+        {% for product in products %}
+        <div class="relative overflow-hidden rounded-lg shadow-md flex flex-col justify-between h-100 min-w-[250px] w-64 flex-shrink-0 bg-white border border-[#AB886D]">
+            {% if product.image.url %}
+            <div class="relative p-4 flex items-center justify-center h-64">
+                <img class="relative w-full h-full object-cover rounded-t-lg" src="{{ product.image.url }}" alt="{{ product.name }}">
+            </div>
+            {% endif %}
+            <div class="relative text-[#493628] px-6 pb-6 mt-4 flex flex-col justify-between flex-grow">
+                <div class="flex justify-between mb-2">
+                    <span class="block font-semibold text-sm truncate">{{ product.name }}</span>
+                    <span class="block bg-[#AB886D] rounded-full text-white text-xs font-bold px-3 py-1 leading-none flex items-center">
+                        ${{ product.price }}
+                    </span>
                 </div>
-                {% endif %}
-                <div class="relative text-black px-6 pb-6 mt-6 flex flex-col justify-between flex-grow">
-                    <div class="flex justify-between">
-                        <span class="block font-semibold text-sm">{{ product.name }}</span>
-                        <span class="block bg-white rounded-full text-black text-xs font-bold px-3 py-2 leading-none flex items-center">${{ product.price }}</span>
-                    </div>
-                    <div class="flex justify-center mt-4">
-                        <form method="post" action="{% url 'add_to_cart:add_to_cart' product.id %}" class="add-to-cart-form">
-                            {% csrf_token %}
-                            <button type="submit" class="w-full bg-green-600 text-white px-12 py-2 rounded font-bold text-sm">Add to Cart</button>
-                        </form>
-                    </div>
+                <div class="flex justify-center mt-4">
+                    <form method="post" action="{% url 'add_to_cart:add_to_cart' product.id %}" class="add-to-cart-form">
+                        {% csrf_token %}
+                        <button type="submit" class="w-full bg-[#AB886D] text-white px-12 py-2 rounded font-bold text-sm hover:bg-[#493628] transition duration-300">
+                            Add to Cart
+                        </button>
+                    </form>
                 </div>
             </div>
-            {% empty %}
-            <p>No products are available for now. Check back later!</p>
-            {% endfor %}
         </div>
+        {% empty %}
+        <p class="text-[#493628]">No products are available for now. Check back later!</p>
+        {% endfor %}
     </div>
 </div>
+
 
 <!-- New Section for Benefits -->
-<div class="m-8 p-4 bg-gray-100 rounded-lg flex flex-wrap justify-between">
-    <div class="flex items-center mb-4 w-full sm:w-1/2 lg:w-1/4">
-        <img src="/media/offers_poster/cart.webp" alt="Largest Nursery" class="h-10 w-10 mr-3">
+<!-- New Section for Benefits -->
+<div class="m-8 p-6 bg-[#EDE0D4] rounded-lg shadow-lg flex flex-wrap justify-between">
+    <!-- Largest Nursery -->
+    <div class="flex items-center mb-6 w-full sm:w-1/2 lg:w-1/4">
+        <img src="/media/offers_poster/cart.webp" alt="Largest Nursery" class="h-14 w-14 mr-4">
         <div>
-            <h3 class="font-bold">Largest Nursery</h3>
-            <p>1.2 Million plant lovers connected with us</p>
+            <h3 class="font-bold text-[#493628] text-lg">Largest Nursery</h3>
+            <p class="text-[#AB886D] text-sm">1.2 Million plant lovers connected with us</p>
         </div>
     </div>
-    <div class="flex items-center mb-4 w-full sm:w-1/2 lg:w-1/4">
-        <img src="/media/offers_poster/support.png" alt="Lifetime support" class="h-10 w-10 mr-3">
+
+    <!-- Lifetime Support -->
+    <div class="flex items-center mb-6 w-full sm:w-1/2 lg:w-1/4">
+        <img src="/media/offers_poster/support.png" alt="Lifetime support" class="h-14 w-14 mr-4">
         <div>
-            <h3 class="font-bold">Lifetime Support</h3>
-            <p>We help you grow your garden for lifetime</p>
+            <h3 class="font-bold text-[#493628] text-lg">Lifetime Support</h3>
+            <p class="text-[#AB886D] text-sm">We help you grow your garden for a lifetime</p>
         </div>
     </div>
-    <div class="flex items-center mb-4 w-full sm:w-1/2 lg:w-1/4">
-        <img src="/media//offers_poster/shipping.png" alt="Shipping" class="h-20 w-20 mr-3">
+
+    <!-- Secure Shipping -->
+    <div class="flex items-center mb-6 w-full sm:w-1/2 lg:w-1/4">
+        <img src="/media/offers_poster/shipping.png" alt="Secure Shipping" class="h-14 w-14 mr-4">
         <div>
-            <h3 class="font-bold">Secure Shipping</h3>
-            <p>Diligent care taken to deliver healthy plants</p>
+            <h3 class="font-bold text-[#493628] text-lg">Secure Shipping</h3>
+            <p class="text-[#AB886D] text-sm">Diligent care taken to deliver healthy plants</p>
         </div>
     </div>
 </div>
 
-<!-- Offer Grid Section -->
-<div class="grid grid-cols-2 gap-0 p-8 sm:grid-cols-3 xl:gap-5">
-    {% for offer in offers %}
-    {% if forloop.first %}
-    <!-- Offer Image with larger width - start -->
-    <div class="group relative flex col-span-2 h-48 items-end overflow-hidden bg-gray-100 shadow-lg md:h-80">
-        <img src="{{ offer.image.url }}" loading="lazy" alt="{{ offer.title }}" class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
-        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50"></div>
-        <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">{{ offer.title }}</span>
-    </div>
-    <!-- Offer Image with larger width - end -->
-    {% else %}
-    <!-- Offer Image - start -->
-    <div class="group relative flex h-48 items-end overflow-hidden bg-gray-100 shadow-lg md:h-80">
-        <img src="{{ offer.image.url }}" loading="lazy" alt="{{ offer.title }}" class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
-        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50"></div>
-        <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">{{ offer.title }}</span>
-    </div>
-    <!-- Offer Image - end -->
-    {% endif %}
-    {% endfor %}
-</div>
 
 {% endblock %}
