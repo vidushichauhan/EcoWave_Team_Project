@@ -29,36 +29,33 @@ def home(request):
     sort_by = request.GET.get('sort_by', '')
 
     ### Initial Product Query
-
     products = Product.objects.filter(expiry_date__gte=datetime.now(), in_stock=True)
-    
+
     ### Greeting Message based on time
     timezone = pytz.timezone('America/New_York')
-    current_hour = datetime.now(timezone).hour
+    current_datetime = datetime.now(timezone)  # Ensure timezone is set
+    current_hour = current_datetime.hour  # Extract the hour
+
     if current_hour < 12:
-        greeting = "Good morning"
+        greeting = "Good morning! 🌞 Start your day with some green vibes!"
     elif 12 <= current_hour < 18:
-        greeting = "Good afternoon"
+        greeting = "Good afternoon! 🌿 Let's grow something beautiful."
     else:
-        greeting = "Good evening"
+        greeting = "Good evening! 🌙 Unwind with our serene collection."
 
     ### User Name
     user_name = request.user.first_name
 
     ### Handling Search History
-    # Retrieves the search history from cookies and splits it into a list.
     search_history = request.COOKIES.get('search_history', '')
     search_history = search_history.split(',') if search_history else []
 
     ### Filtering Products Based on Query
     if query:
         products = products.filter(name__icontains=query)
-        # Store the search query in cookies
         if query not in search_history:
             search_history.append(query)
-            search_history_cookie = ','.join(search_history)
-        else:
-            search_history_cookie = ','.join(search_history)
+        search_history_cookie = ','.join(search_history)
 
     ### Filtering Products Based on Price and Rating
     if min_price:
@@ -75,7 +72,6 @@ def home(request):
         products = products.order_by('expiry')
     elif sort_by == 'expiry_desc':
         products = products.order_by('-expiry')
-
 
     response = render(request, 'Shop/home.html', {
         'products': products,

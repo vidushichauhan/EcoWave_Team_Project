@@ -1,6 +1,15 @@
 {% extends 'Shop/base.html' %}
 {% block title %}Ecowave | Dashboard {% endblock %}
 <style>
+    .text-right h1 {
+        font-family: 'Poppins', sans-serif;
+        text-shadow: 2px 2px #E4E0E1;
+    }
+
+    .text-right p {
+        font-family: 'Roboto', sans-serif;
+        font-style: italic;
+    }
     .hidden {
         display: none;
     }
@@ -26,7 +35,6 @@
             opacity: 0;
         }
     }
-
     .slide-in {
         animation: slideIn 0.5s forwards;
     }
@@ -39,7 +47,14 @@
 {% block content %}
 <div class="container mx-auto px-6">
     <!-- Greeting Message -->
-    <h1 class="text-4xl font-bold text-[#493628] mb-6 mt-6">{{ greeting }}, {{ user_name }}!</h1>
+    <div class="text-right mt-10">
+    <h1 class="text-2xl font-bold text-[#493628] tracking-wide">
+        {{ greeting }} 🌿
+    </h1>
+    <p class="text-4xl font-extrabold text-[#AB886D] font-serif mt-2">
+        Welcome back, {{ user_name }}! 🌱
+    </p>
+</div>
 
     <!-- Search Bar -->
     <div class="relative mb-6">
