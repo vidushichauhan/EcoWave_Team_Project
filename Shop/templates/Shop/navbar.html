@@ -93,7 +93,26 @@
 
         <!-- Profile Section with Dropdown -->
         <div class="profile-container relative">
-            <img src="{{ user_profile_pic }}" alt="Profile Picture" class="profile-image" id="profile-btn">
+            <img
+  src="/media/default.png"
+  alt="Profile Picture"
+  class="profile-image"
+  id="profile-btn"
+  onerror="this.src='/media/default.png'"
+  data-profile-pic="{{ user_profile_pic }}"
+>
+<script>
+  // Get the profile image element
+  const profileImage = document.getElementById('profile-btn');
+
+  // Check if the user has a profile picture
+  const userProfilePic = profileImage.dataset.profilePic;
+
+  if (userProfilePic) {
+    profileImage.src = userProfilePic;
+  }
+</script>
+
             <div class="dropdown-menu" id="dropdown">
                 <a href="{% url 'Profile:get_user_details' %}">Profile</a>
                 <a href="{% url 'Auth:logout' %}">Logout</a>
