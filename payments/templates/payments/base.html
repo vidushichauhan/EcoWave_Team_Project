@@ -1,62 +1,94 @@
-{% extends 'payments/base.html' %}
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    {% block extra_css %}{% endblock %}
+</head>
+<style>
+    /* Body styling */
+    body {
+        background-color: #E4E0E1; /* Light background */
+        color: #493628; /* Dark text for readability */
+        font-family: 'Arial', sans-serif;
+    }
 
-{% block title %}Payment Page{% endblock %}
+    /* Navbar styling */
+    nav {
+        background-color: #AB886D; /* Muted brown for the navbar */
+        color: white;
+        padding: 1rem;
+    }
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'payments/payment_styles.css' %}">
-{% endblock %}
+    nav a {
+        color: #E4E0E1; /* Light link text in navbar */
+        text-decoration: none;
+        margin: 0 1rem;
+        transition: color 0.3s ease;
+    }
 
-{% block content %}
-<div class="container mx-auto px-4 py-12">
-    <!-- Title -->
-    <h1 class="text-3xl text-[#493628] font-extrabold mb-10 text-center">Secure Payment</h1>
+    nav a:hover {
+        color: #D6C0B3; /* Soft hover effect */
+    }
 
-    <!-- Payment Form -->
-    <form method="post" class="max-w-lg mx-auto bg-[#EDE0D4] p-8 rounded-lg shadow-lg space-y-6 border border-[#AB886D]">
-        {% csrf_token %}
-        <div class="space-y-5">
-            <!-- Name -->
-            <div>
-                <label for="id_Name" class="block text-sm font-bold text-[#493628] mb-2">Full Name</label>
-                {{ form.Name }}
-            </div>
+    /* General container styling */
+    .container {
+        background-color: #D6C0B3; /* Light muted background for containers */
+        border: 1px solid #AB886D; /* Border matches the navbar */
+        border-radius: 8px;
+        padding: 2rem;
+        margin: 2rem auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-            <!-- Address -->
-            <div>
-                <label for="id_address" class="block text-sm font-bold text-[#493628] mb-2">Address</label>
-                {{ form.address }}
-            </div>
+    /* Buttons */
+    button {
+        background-color: #AB886D; /* Muted brown for buttons */
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
 
-            <!-- Zipcode -->
-            <div>
-                <label for="id_zipcode" class="block text-sm font-bold text-[#493628] mb-2">Zipcode</label>
-                {{ form.zipcode }}
-            </div>
+    button:hover {
+        background-color: #493628; /* Darker brown on hover */
+        transform: scale(1.05);
+    }
 
-            <!-- Country -->
-            <div>
-                <label for="id_country" class="block text-sm font-bold text-[#493628] mb-2">Country</label>
-                {{ form.country }}
-            </div>
+    /* Form Inputs */
+    input, textarea, select {
+        background-color: #E4E0E1; /* Match the body background */
+        border: 1px solid #AB886D; /* Border matches the color scheme */
+        border-radius: 8px;
+        padding: 0.5rem;
+        font-size: 1rem;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 1rem;
+        color: #493628; /* Text color for readability */
+    }
 
-            <!-- City -->
-            <div>
-                <label for="id_city" class="block text-sm font-bold text-[#493628] mb-2">City</label>
-                {{ form.city }}
-            </div>
-
-            <!-- Email -->
-            <div>
-                <label for="id_Email" class="block text-sm font-bold text-[#493628] mb-2">Email Address</label>
-                {{ form.Email }}
-            </div>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="w-full bg-[#AB886D] text-white py-3 px-6 rounded-lg hover:bg-[#493628] transition duration-300 text-lg font-semibold">
-            Pay Now
-        </button>
-    </form>
-</div>
-{% endblock %}
+    input:focus, textarea:focus, select:focus {
+        border-color: #493628; /* Focused border color */
+        outline: none;
+        box-shadow: 0 0 4px rgba(73, 54, 40, 0.4);
+    }
+</style>
+<body>
+    {% include 'Shop/navbar.html' %}
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+</body>
+</html>

@@ -4,59 +4,41 @@
 {% block title %}Payment Page{% endblock %}
 
 {% block extra_css %}
-{# <link rel="stylesheet" href="{% static 'payments/styles.css' %}"> #}
+{#<link rel="stylesheet" href="{% static 'payments/styles.css' %}">#}
 {% endblock %}
 
 {% block content %}
-<div class="container mx-auto px-4 py-12">
-    <!-- Title -->
-    <h1 class="text-3xl text-[#493628] font-extrabold mb-10 text-center">Secure Payment</h1>
-
-    <!-- Payment Form -->
-    <form method="post" class="max-w-lg mx-auto bg-[#EDE0D4] p-8 rounded-lg shadow-lg space-y-6 border border-[#AB886D]">
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8 text-center">Payment</h1>
+    <form method="post" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg space-y-6">
         {% csrf_token %}
-        <div class="space-y-5">
-            <!-- Name -->
+        <div class="space-y-4">
             <div>
-                <label for="id_Name" class="block text-sm font-bold text-[#493628] mb-2">Full Name</label>
-                {{ form.Name|add_class:"w-full py-2 px-4 border border-[#AB886D] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#493628]" }}
+                <label for="id_Name" class="block text-gray-700 font-bold mb-2">Name</label>
+                {{ form.Name }}
             </div>
-
-            <!-- Address -->
             <div>
-                <label for="id_address" class="block text-sm font-bold text-[#493628] mb-2">Address</label>
-                {{ form.address|add_class:"w-full py-2 px-4 border border-[#AB886D] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#493628]" }}
+                <label for="id_address" class="block text-gray-700 font-bold mb-2">Address</label>
+                {{ form.address }}
             </div>
-
-            <!-- Zipcode -->
             <div>
-                <label for="id_zipcode" class="block text-sm font-bold text-[#493628] mb-2">Zipcode</label>
-                {{ form.zipcode|add_class:"w-full py-2 px-4 border border-[#AB886D] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#493628]" }}
+                <label for="id_zipcode" class="block text-gray-700 font-bold mb-2">Zipcode</label>
+                {{ form.zipcode }}
             </div>
-
-            <!-- Country -->
             <div>
-                <label for="id_country" class="block text-sm font-bold text-[#493628] mb-2">Country</label>
-                {{ form.country|add_class:"w-full py-2 px-4 border border-[#AB886D] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#493628]" }}
+                <label for="id_country" class="block text-gray-700 font-bold mb-2">Country</label>
+                {{ form.country }}
             </div>
-
-            <!-- City -->
             <div>
-                <label for="id_city" class="block text-sm font-bold text-[#493628] mb-2">City</label>
-                {{ form.city|add_class:"w-full py-2 px-4 border border-[#AB886D] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#493628]" }}
+                <label for="id_city" class="block text-gray-700 font-bold mb-2">City</label>
+                {{ form.city }}
             </div>
-
-            <!-- Email -->
             <div>
-                <label for="id_Email" class="block text-sm font-bold text-[#493628] mb-2">Email Address</label>
-                {{ form.Email|add_class:"w-full py-2 px-4 border border-[#AB886D] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#493628]" }}
+                <label for="id_Email" class="block text-gray-700 font-bold mb-2">Email</label>
+                {{ form.Email }}
             </div>
         </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="w-full bg-[#AB886D] text-white py-3 px-6 rounded-lg hover:bg-[#493628] transition duration-300 text-lg font-semibold">
-            Pay Now
-        </button>
+        <button type="submit" class="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-800 transition duration-300">Pay Now</button>
     </form>
 </div>
 {% endblock %}
