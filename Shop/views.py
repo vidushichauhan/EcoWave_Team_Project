@@ -77,7 +77,7 @@ def home(request):
         'products': products,
         'greeting': greeting,
         'user_name': user_name,
-        'title': 'GreenCart | Home',
+        'title': 'EcoWave | Home',
         'user_profile_pic': UserProfile.objects.get(user=request.user).profile_pic.url,
         'search_history': search_history,
     })

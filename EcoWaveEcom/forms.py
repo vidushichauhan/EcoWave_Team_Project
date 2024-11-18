@@ -1,5 +1,5 @@
 from django import forms
-from GreenCartEcom.models import Email
+from EcoWaveEcom.models import Email
 
 
 class EmailForm(forms.ModelForm):

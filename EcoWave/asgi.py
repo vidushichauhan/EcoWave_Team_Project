@@ -1,5 +1,5 @@
 """
-ASGI config for GreenCart project.
+ASGI config for EcoWave project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'GreenCart.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'EcoWave.settings')
 
 application = get_asgi_application()

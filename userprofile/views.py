@@ -28,7 +28,7 @@ def get_user_details(request):
         'user_form': user_form,
         'user_profile': user_profile,
         'user_profile_form': user_profile_form,
-        'title': 'GreenCart | ' + request.user.first_name,
+        'title': 'EcoWave | ' + request.user.first_name,
         'user_profile_pic': user_profile.profile_pic.url,
     })
 
@@ -54,7 +54,7 @@ def edit_user_details(request):
         user_profile_form = UserProfileForm(instance=user_profile)
 
     return render(request, 'userprofile/profile.html', {
-        'title': 'GreenCart | ' + request.user.first_name,
+        'title': 'EcoWave | ' + request.user.first_name,
         'user_form': user_form,
         'user_profile_form': user_profile_form,
         'user_profile_pic': user_profile.profile_pic.url,

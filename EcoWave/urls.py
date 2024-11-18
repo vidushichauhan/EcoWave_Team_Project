@@ -1,5 +1,5 @@
 """
-URL configuration for GreenCart project.
+URL configuration for EcoWave project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -20,13 +20,13 @@ from django.conf.urls.static import static
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-admin.site.site_header="GreenCart Admin"
-admin.site.site_title ="GreenCart Admin Portal"
+admin.site.site_header="EcoWave Admin"
+admin.site.site_title ="EcoWave Admin Portal"
 from payments.views import payment_view, payment_success
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('GreenCartEcom.urls','GreenCartEcom'), name='GreenCartEcom'),
+    path('', include('EcoWaveEcom.urls','EcoWaveEcom'), name='EcoWaveEcom'),
     path('cart/', include('add_to_cart.urls', 'AddToCart'), name='AddToCart'),
     path('auth/', include('Auth.urls','Auth'), name='Auth'),
     path('shop/', include('Shop.urls','Shop'), name='Shop'),

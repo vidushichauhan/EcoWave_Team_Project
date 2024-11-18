@@ -103,4 +103,4 @@ def logout_view(request):
     logout(request)
     request.session.flush()
     messages.warning(request, 'You have been logged out')
-    return redirect('GreenCartEcom:index') 
+    return redirect('EcoWaveEcom:index')
