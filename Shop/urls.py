@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import clear_search_history, home, product_detail, product_list, create_product, edit_product, \
-    delete_product, manage_reviews, delete_review, edit_review, recycle_product_list, environmental_dashboard
+    delete_product, manage_reviews, delete_review, edit_review, environmental_dashboard
 
 app_name = 'Shop'
 
@@ -12,7 +12,6 @@ urlpatterns = [
     path('profile/',home, name='profile'),
     path('product-detail/<int:id>', product_detail, name='product_detail'),
     path('mylistings/', product_list, name='product_list'),
-    path('recycle/',recycle_product_list,name="Recycle"),
     path('create_product/', create_product, name='create_product'),
     path('edit_product/<int:product_id>/', edit_product, name='edit_product'),
     path('delete_product/', delete_product, name='delete_product'),

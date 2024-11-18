@@ -138,17 +138,8 @@ def product_detail(request, id):
 @login_required
 def product_list(request):
    user = request.user
-   products = Product.objects.filter(user_id=user.id, trade_in_preference__in=['resell', 'donate'])
+   products = Product.objects.filter(user_id=user.id, trade_in_preference__in=['resell', 'donate','recycle'])
    return render(request, 'Shop/product_list.html', {'products': products, 'user_profile_pic': UserProfile.objects.get(user=request.user).profile_pic.url})
-
-@login_required
-def recycle_product_list(request):
-    user = request.user
-    products = Product.objects.filter(user_id=user.id, trade_in_preference='recycle')
-    return render(request, 'Shop/recycle_product_list.html', {'products': products, 'user_profile_pic': UserProfile.objects.get(user=request.user).profile_pic.url})
-
-
-
 
 
 @login_required
@@ -186,6 +177,23 @@ def edit_product(request, product_id):
                   {'form': form, 'user_profile_pic': UserProfile.objects.get(user=request.user).profile_pic.url,
                    'product': product})
 
+@login_required
+def edit_recycle_product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.updated_at = datetime.now()
+            product.save()
+            return redirect('Shop:product_list')
+    else:
+        form = ProductForm(instance=product)
+
+    return render(request, 'Shop/edit_recycle_product.html',
+                  {'form': form, 'user_profile_pic': UserProfile.objects.get(user=request.user).profile_pic.url,
+                   'product': product})
 
 @login_required
 def delete_product(request):
