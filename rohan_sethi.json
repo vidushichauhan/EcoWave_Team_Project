@@ -7,7 +7,7 @@
             "user": 1,
             "content_type": 7,
             "object_id": "2",
-            "object_repr": "test@greencart.com",
+            "object_repr": "test@ecowave.com",
             "action_flag": 2,
             "change_message": "[{\"changed\": {\"fields\": [\"Is staff\"]}}]"
         }
@@ -20,7 +20,7 @@
             "user": 1,
             "content_type": 7,
             "object_id": "2",
-            "object_repr": "test@greencart.com",
+            "object_repr": "test@ecowave.com",
             "action_flag": 2,
             "change_message": "[{\"changed\": {\"fields\": [\"Is staff\"]}}]"
         }
@@ -753,7 +753,7 @@
         "model": "contenttypes.contenttype",
         "pk": 6,
         "fields": {
-            "app_label": "GreenCartEcom",
+            "app_label": "EcoWave",
             "model": "offer"
         }
     },
@@ -902,7 +902,7 @@
         }
     },
     {
-        "model": "GreenCartEcom.offer",
+        "model": "EcoWaveCartEcom.offer",
         "pk": 1,
         "fields": {
             "title": "Indoor Plants",
@@ -910,7 +910,7 @@
         }
     },
     {
-        "model": "GreenCartEcom.offer",
+        "model": "EcoWaveCartEcom.offer",
         "pk": 2,
         "fields": {
             "title": "Outdoor Plants",
@@ -926,7 +926,7 @@
         }
     },
     {
-        "model": "GreenCartEcom.offer",
+        "model": "EcoWaveEcom.offer",
         "pk": 4,
         "fields": {
             "title": "Pot sets",
@@ -934,7 +934,7 @@
         }
     },
     {
-        "model": "GreenCartEcom.offer",
+        "model": "EcoWaveEcom.offer",
         "pk": 5,
         "fields": {
             "title": "Art and crafts for Decoration",
@@ -950,7 +950,7 @@
             "is_superuser": true,
             "first_name": "admin",
             "last_name": "admin",
-            "email": "admin@greencart.com",
+            "email": "admin@ecowavecart.com",
             "is_active": true,
             "is_staff": true,
             "groups": [],

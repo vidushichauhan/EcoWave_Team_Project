@@ -38,7 +38,7 @@ def query_form(request):
                 f"Description: {query.description}"
             )
             from_email = settings.DEFAULT_FROM_EMAIL
-            recipient_list = ['support@greencart.com']
+            recipient_list = ['support@ecowave.com']
             send_mail(subject, message, from_email, recipient_list, fail_silently=True)
 
             return render(request, 'support/query_success.html', {'ticket_number': query.ticket_number, 'user_profile_pic': UserProfile.objects.get(user=request.user).profile_pic.url})

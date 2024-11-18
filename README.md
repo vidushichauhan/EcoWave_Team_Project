@@ -2,10 +2,10 @@ Here's an improved version of your README file with better formatting and readab
 
 ---
 
-# **GreenCart**  
+# **EcoWave**  
 [![forthebadge made-with-python](https://forthebadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
-GreenCart is part of the **EcoWave** project, providing a seamless and eco-friendly shopping experience.
+EcoWave is part of the **EcoWave** project, providing a seamless and eco-friendly shopping experience.
 
 ---
 
