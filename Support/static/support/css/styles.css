@@ -40,8 +40,8 @@ body {
 }
 
 .banner-content {
-    max-width: 600px;
-    margin-right: 50px;
+    max-width: 700px;
+    /*margin-right: 50px;*/
     color: #D6C0B3;
 }
 
@@ -91,8 +91,9 @@ body {
 /* Ticket Styles */
 .ticket {
     font-size: 24px;
-    background-color: #D6C0B3;
+    background-color: #AB886D;
     padding: 20px 40px;
+    margin-left: 60px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(73, 54, 40, 0.2);
     color: #493628;
@@ -101,12 +102,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 80%;
+    width: 90%;
 }
 
 .ticket:hover {
-    background-color: #AB886D;
-    color: #E4E0E1;
+    background-color: #493628;
+    color: #493628;
     transform: translateX(10px);
 }
 

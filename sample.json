@@ -1107,7 +1107,7 @@
         "model": "Shop.InsightProduct",
         "pk": 21,
         "fields": {
-            "product": 1,
+            "product": 21,
             "carbon_footprint": 1.2,
             "water_footprint": 110.0,
             "energy_consumption": 0.7,
@@ -1119,7 +1119,7 @@
         "model": "Shop.InsightProduct",
         "pk": 22,
         "fields": {
-            "product": 2,
+            "product": 22,
             "carbon_footprint": 2.1,
             "water_footprint": 130.0,
             "energy_consumption": 0.9,
@@ -1131,7 +1131,7 @@
         "model": "Shop.InsightProduct",
         "pk": 23,
         "fields": {
-            "product": 3,
+            "product": 23,
             "carbon_footprint": 1.8,
             "water_footprint": 140.0,
             "energy_consumption": 1.1,
@@ -1143,7 +1143,7 @@
         "model": "Shop.InsightProduct",
         "pk": 24,
         "fields": {
-            "product": 4,
+            "product": 24,
             "carbon_footprint": 1.3,
             "water_footprint": 115.0,
             "energy_consumption": 0.8,
@@ -1155,7 +1155,7 @@
         "model": "Shop.InsightProduct",
         "pk": 25,
         "fields": {
-            "product": 5,
+            "product": 25,
             "carbon_footprint": 2.5,
             "water_footprint": 150.0,
             "energy_consumption": 1.2,
@@ -1167,7 +1167,7 @@
         "model": "Shop.InsightProduct",
         "pk": 26,
         "fields": {
-            "product": 6,
+            "product": 26,
             "carbon_footprint": 2.0,
             "water_footprint": 125.0,
             "energy_consumption": 1.0,
@@ -1179,7 +1179,7 @@
         "model": "Shop.InsightProduct",
         "pk": 27,
         "fields": {
-            "product": 7,
+            "product": 27,
             "carbon_footprint": 1.9,
             "water_footprint": 135.0,
             "energy_consumption": 0.85,
@@ -1191,7 +1191,7 @@
         "model": "Shop.InsightProduct",
         "pk": 28,
         "fields": {
-            "product": 8,
+            "product": 28,
             "carbon_footprint": 1.4,
             "water_footprint": 118.0,
             "energy_consumption": 0.75,
@@ -1203,7 +1203,7 @@
         "model": "Shop.InsightProduct",
         "pk": 29,
         "fields": {
-            "product": 13,
+            "product": 29,
             "carbon_footprint": 2.2,
             "water_footprint": 160.0,
             "energy_consumption": 1.5,
