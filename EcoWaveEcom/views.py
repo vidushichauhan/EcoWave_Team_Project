@@ -57,7 +57,7 @@ def terms_and_conditions(request):
         return render(request, 'FooterPages/terms_conditions.html')
     
 
-def gardening_guides(request):
+def eco_guide(request):
     if request.user.is_authenticated:
         return render(request, 'FooterPages/Environment_Renew.html', {'user_profile_pic': UserProfile.objects.get(user=request.user).profile_pic.url})
     else:
