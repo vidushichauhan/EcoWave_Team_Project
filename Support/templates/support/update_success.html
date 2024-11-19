@@ -2,24 +2,25 @@
 {% block title %}EcoWave | Update Success{% endblock %}
 {% load static %}
 
-{% block title %}
-    Ticket Status Updated Successfully
-{% endblock %}
-
 {% block content %}
-    <div class="banner">
-        <div class="banner-content">
-            <h1>Ticket Status Updated Successfully</h1>
-            <p>The ticket status has been successfully updated.</p>
-            <div class="ticket">
-                <p>Your support ticket number:</p>
-                <p><strong>{{ ticket_number }}</strong></p>
-                 <p>is updated to:<br> <strong>{{  new_status  }}</strong></p>
+<div class="banner">
+    <div class="banner-content">
+        <h1>Ticket Status Updated Successfully</h1>
+        <p>The ticket status has been successfully updated.</p>
+        <div class="ticket_test">
+            <div>
+                <p>Your support ticket number:<strong>{{ ticket_number }}</strong></p>
+
+
             </div>
+           <div>
+            <p>is updated to: <strong>{{ new_status }}</strong></p>
+               </div>
         </div>
     </div>
+</div>
 {% endblock %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'support/css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'support/css/styles.css' %}">
 {% endblock %}
