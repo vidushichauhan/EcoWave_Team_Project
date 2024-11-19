@@ -121,8 +121,8 @@ body {
 
 .ticket:hover {
     background-color: #493628;
-    color: #493628;
     transform: translateX(10px);
+    color: white;
 }
 
 .ticket-text {
