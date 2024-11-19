@@ -9,7 +9,7 @@ urlpatterns = [
     path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
     path('terms-and-conditions/', views.terms_and_conditions, name='terms_and_conditions'),
     path('eco_guides/', views.eco_guide, name='eco_guide'),
-    path('plant_care_tips/', views.plant_care_tips, name='plant_care_tips'),
+    path('ecofriendly_tips/', views.ecofriendly_tips, name='ecofriendly_tips'),
     path('subscribe/', views.subscribe, name='subscribe'),
     path('unverified-products/', views.unverified_products, name='unverified_products'),
     

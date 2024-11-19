@@ -63,7 +63,7 @@ def eco_guide(request):
     else:
         return render(request, 'FooterPages/Environment_Renew.html')
 
-def plant_care_tips(request):
+def ecofriendly_tips(request):
     if request.user.is_authenticated:
         return render(request, 'FooterPages/Eco_Friendly_Tips.html', {'user_profile_pic': UserProfile.objects.get(user=request.user).profile_pic.url})
     else:
