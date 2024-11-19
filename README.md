@@ -69,7 +69,7 @@ python manage.py runserver
 
 To load initial data for the project, run the following command:
 ```bash
-python manage.py loaddata data.json
+python manage.py loaddata sample.json
 ```
 
 ### Default Credentials
