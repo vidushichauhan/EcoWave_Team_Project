@@ -74,11 +74,11 @@ python manage.py loaddata data.json
 
 ### Default Credentials
 - **Admin**  
-  - **Email**: `admin@greencart.com`  
+  - **Email**: `admin@ecowave.com`  
   - **Password**: `Admin@123`
 
 - **Test User**  
-  - **Email**: `test@greencart.com`  
+  - **Email**: `test@ecowave.com`  
   - **Password**: `Test@123`
 
 ---

@@ -180,7 +180,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "Email",
-                    models.EmailField(default="test@greencart.ca", max_length=254),
+                    models.EmailField(default="test@ecowave.ca", max_length=254),
                 ),
                 (
                     "stripe_payment_intent_id",

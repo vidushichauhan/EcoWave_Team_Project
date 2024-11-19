@@ -902,7 +902,7 @@
         }
     },
     {
-        "model": "EcoWaveCartEcom.offer",
+        "model": "EcoWaveEcom.offer",
         "pk": 1,
         "fields": {
             "title": "Indoor Plants",
@@ -910,7 +910,7 @@
         }
     },
     {
-        "model": "EcoWaveCartEcom.offer",
+        "model": "EcoWaveEcom.offer",
         "pk": 2,
         "fields": {
             "title": "Outdoor Plants",
@@ -918,7 +918,7 @@
         }
     },
     {
-        "model": "GreenCartEcom.offer",
+        "model": "EcoWaveEcom.offer",
         "pk": 3,
         "fields": {
             "title": "Gardening Toolkit",
@@ -950,7 +950,7 @@
             "is_superuser": true,
             "first_name": "admin",
             "last_name": "admin",
-            "email": "admin@ecowavecart.com",
+            "email": "admin@ecowave.com",
             "is_active": true,
             "is_staff": true,
             "groups": [],
@@ -966,7 +966,7 @@
             "is_superuser": false,
             "first_name": "test",
             "last_name": "user",
-            "email": "test@greencart.com",
+            "email": "test@ecowave.com",
             "is_active": true,
             "is_staff": true,
             "groups": [],
